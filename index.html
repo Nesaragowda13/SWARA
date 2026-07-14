@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swapnitha & Ravinandan — Traditional Wedding Invitation</title>
+    <meta name="description" content="You are cordially invited to celebrate the marriage of Swapnitha & Ravinandan. #SwaRaSangama">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ==================== PRELOADER ==================== -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-monogram">S & R</div>
+            <p class="loader-text">And So, Our Journey Begins...</p>
+        </div>
+    </div>
+
+    <!-- ==================== BACKGROUND AUDIO ==================== -->
+    <audio id="bg-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="audio-toggle" class="audio-button" aria-label="Toggle Music" title="Play Music">
+        <svg class="audio-icon on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18V5l12-2v13"></path>
+            <circle cx="6" cy="18" r="3"></circle>
+            <circle cx="18" cy="16" r="3"></circle>
+        </svg>
+        <svg class="audio-icon off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
+            <line x1="1" y1="1" x2="23" y2="23"></line>
+            <path d="M9 9v9"></path>
+            <path d="M15 5v3"></path>
+            <path d="M21 3v7"></path>
+            <circle cx="6" cy="18" r="3"></circle>
+            <circle cx="18" cy="16" r="3"></circle>
+        </svg>
+    </button>
+
+    <!-- Canvas for floating gold dust particles -->
+    <canvas id="gold-canvas"></canvas>
+
+    <!-- ==================== MINIMALIST ENVELOPE GATE ==================== -->
+    <div id="envelope-overlay" class="envelope-overlay">
+        <div class="envelope-wrapper">
+            <div class="envelope" id="envelope">
+                <div class="envelope-card" id="envelope-card">
+                    <div class="envelope-inner">
+                        <div class="monogram-logo">S & R</div>
+                        <div class="divider-gold-line"></div>
+                        <p class="envelope-sub">WE ARE GETTING MARRIED</p>
+                        <h2 class="envelope-names">Swapnitha & Ravinandan</h2>
+                        <p class="envelope-date">August 27, 2026</p>
+                        
+                        <!-- Circular gold wax seal button -->
+                        <div class="wax-seal" id="wax-seal">
+                            <div class="seal-inner">
+                                <span class="seal-text">OPEN</span>
+                                <div class="seal-border-pulse"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== MAIN WEDDING WEBSITE ==================== -->
+    <div id="main-content" class="main-content" style="opacity: 0; display: none;">
+        
+        <!-- ==================== NAVIGATION BAR ==================== -->
+        <header class="navbar" id="navbar">
+            <div class="nav-container">
+                <a href="#hero" class="nav-logo">S & R</a>
+                <nav class="nav-menu" id="nav-menu">
+                    <a href="#hero" class="nav-link">Home</a>
+                    <a href="#couple" class="nav-link">Couple</a>
+                    <a href="#story" class="nav-link">Our Story</a>
+                    <a href="#events" class="nav-link">Events</a>
+                    <a href="#rsvp" class="nav-link">RSVP</a>
+                </nav>
+                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation Menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- ==================== HERO SECTION ==================== -->
+        <section id="hero" class="hero-section" style="background-image: url('minimal-bg.jpg');">
+            <div class="hero-border-frame"></div>
+            <div class="hero-content">
+                <p class="hero-intro reveal">THE WEDDING INVITATION</p>
+                <h1 class="hero-title reveal">
+                    <span class="name">Swapnitha</span>
+                    <span class="ampersand">&</span>
+                    <span class="name">Ravinandan</span>
+                </h1>
+                <p class="hero-date reveal">THURSDAY, AUGUST 27, 2026</p>
+                <p class="hero-venue reveal">SULLIA, KARNATAKA, INDIA</p>
+                
+                <!-- Countdown Ticker -->
+                <div class="countdown-container reveal" id="countdown">
+                    <div class="countdown-item">
+                        <span class="number" id="days">00</span>
+                        <span class="label">Days</span>
+                    </div>
+                    <div class="countdown-divider">/</div>
+                    <div class="countdown-item">
+                        <span class="number" id="hours">00</span>
+                        <span class="label">Hours</span>
+                    </div>
+                    <div class="countdown-divider">/</div>
+                    <div class="countdown-item">
+                        <span class="number" id="minutes">00</span>
+                        <span class="label">Mins</span>
+                    </div>
+                    <div class="countdown-divider">/</div>
+                    <div class="countdown-item">
+                        <span class="number" id="seconds">00</span>
+                        <span class="label">Secs</span>
+                    </div>
+                </div>
+
+                <a href="#couple" class="scroll-indicator" aria-label="Scroll down to Couple section">
+                    <span class="scroll-text">Explore invite</span>
+                    <div class="scroll-line"></div>
+                </a>
+            </div>
+        </section>
+
+        <!-- ==================== THE COUPLE SECTION ==================== -->
+        <section id="couple" class="section couple-section">
+            <div class="container">
+                <div class="section-title-wrapper reveal">
+                    <div class="section-gold-monogram">S & R</div>
+                    <h2 class="section-title">The Couple</h2>
+                    <p class="section-subtitle">Drawn together by love and tradition</p>
+                </div>
+
+                <div class="couple-grid">
+                    <!-- Bride card -->
+                    <div class="couple-card bride reveal-left">
+                        <div class="card-image-wrap">
+                            <img src="bride.jpg" alt="Swapnitha - The Bride" class="couple-img">
+                        </div>
+                        <div class="card-details">
+                            <h3 class="couple-name">Swapnitha</h3>
+                            <p class="couple-role">The Bride</p>
+                            <div class="gold-accent-line"></div>
+                            <p class="couple-parents">With love and blessings of family & relatives</p>
+                        </div>
+                    </div>
+
+                    <!-- Decorative Gold Divider -->
+                    <div class="couple-mid-divider reveal">
+                        <div class="divider-line"></div>
+                        <span class="divider-icon">⚜</span>
+                        <div class="divider-line"></div>
+                    </div>
+
+                    <!-- Groom card -->
+                    <div class="couple-card groom reveal-right">
+                        <div class="card-image-wrap">
+                            <img src="groom.jpg" alt="Ravinandan - The Groom" class="couple-img">
+                        </div>
+                        <div class="card-details">
+                            <h3 class="couple-name">Ravinandan</h3>
+                            <p class="couple-role">The Groom</p>
+                            <div class="gold-accent-line"></div>
+                            <p class="couple-parents">With love and blessings of family & relatives</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== OUR STORY SECTION ==================== -->
+        <section id="story" class="section story-section">
+            <div class="container">
+                <div class="section-title-wrapper reveal">
+                    <div class="section-gold-monogram">⚜</div>
+                    <h2 class="section-title">Our Love Story</h2>
+                    <p class="section-subtitle">And so, our journey begins</p>
+                </div>
+
+                <div class="story-timeline">
+                    <!-- Timeline vertical line -->
+                    <div class="timeline-line-vertical"></div>
+
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-item reveal-left">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="story-date">August 25, 2026</span>
+                            <h3 class="story-title">Sangeet & Cocktail Night</h3>
+                            <p class="timeline-tagline">An evening set to the rhythm of joy</p>
+                            <p class="timeline-location">📍 Janaki Venkatarama Samudaya Bhavana, Sullia</p>
+                            <p class="timeline-time">🕒 5:30 PM onwards</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-item reveal-right">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="story-date">August 26, 2026</span>
+                            <h3 class="story-title">Haldi Ceremony</h3>
+                            <p class="timeline-tagline">Where traditions shine in shades of yellow and love</p>
+                            <p class="timeline-location">📍 Sri Durgamba Nilaya Keremule House, Sullia</p>
+                            <p class="timeline-time">🕒 10:00 AM onwards</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 3 -->
+                    <div class="timeline-item reveal-left">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="story-date">August 26, 2026</span>
+                            <h3 class="story-title">Mehendi Ceremony</h3>
+                            <p class="timeline-tagline">Stories written by henna</p>
+                            <p class="timeline-location">📍 Sri Durgamba Nilaya Keremule House, Sullia</p>
+                            <p class="timeline-time">🕒 12:30 PM onwards</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 4 -->
+                    <div class="timeline-item reveal-right">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="story-date">August 27, 2026</span>
+                            <h3 class="story-title">Muhurtham & Reception</h3>
+                            <p class="timeline-tagline">A beautiful journey is about to begin</p>
+                            <p class="timeline-location">📍 Kumbhakodu Kasturi Acchutta Bhat Shashikala Mandira, Sullia</p>
+                            <p class="timeline-time">🕒 Muhurtham: 10:57 AM | Reception: 12:30 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== EVENTS SECTION ==================== -->
+        <section id="events" class="section events-section">
+            <div class="container">
+                <div class="section-title-wrapper reveal">
+                    <div class="section-gold-monogram">📅</div>
+                    <h2 class="section-title">Schedule of Events</h2>
+                    <p class="section-subtitle">We look forward to celebrating with you</p>
+                </div>
+
+                <div class="events-grid">
+                    <!-- Event 1 -->
+                    <div class="event-card reveal">
+                        <div class="event-card-inner">
+                            <h3 class="event-title">Sangeet & Cocktail</h3>
+                            <p class="event-desc">An evening set to the rhythm of joy</p>
+                            <div class="gold-accent-line"></div>
+                            <div class="event-details">
+                                <p><strong>Date:</strong> 25 August 2026, Tuesday</p>
+                                <p><strong>Time:</strong> 5:30 PM onwards</p>
+                                <p><strong>Venue:</strong> Janaki Venkatarama Samudaya Bhavana, Sullia</p>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Janaki+Venkatarama+Samudaya+Bhavana+Sullia" target="_blank" class="event-map-link">View Directions</a>
+                        </div>
+                    </div>
+
+                    <!-- Event 2 -->
+                    <div class="event-card highlight reveal">
+                        <div class="event-card-inner">
+                            <h3 class="event-title">Haldi & Mehendi</h3>
+                            <p class="event-desc">Traditions and stories written by henna</p>
+                            <div class="gold-accent-line"></div>
+                            <div class="event-details">
+                                <p><strong>Date:</strong> 26 August 2026, Wednesday</p>
+                                <p><strong>Time:</strong> 10:00 AM (Haldi) | 12:30 PM (Mehendi)</p>
+                                <p><strong>Venue:</strong> Sri Durgamba Nilaya Keremule House, Sullia</p>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Sri+Durgamba+Nilaya+Keremule+House+Sullia" target="_blank" class="event-map-link">View Directions</a>
+                        </div>
+                    </div>
+
+                    <!-- Event 3 -->
+                    <div class="event-card reveal">
+                        <div class="event-card-inner">
+                            <h3 class="event-title">Muhurtham & Reception</h3>
+                            <p class="event-desc">The sacred knot and celebratory reception</p>
+                            <div class="gold-accent-line"></div>
+                            <div class="event-details">
+                                <p><strong>Date:</strong> 27 August 2026, Thursday</p>
+                                <p><strong>Time:</strong> Muhurtham: 10:57 AM | Reception: 12:30 PM</p>
+                                <p><strong>Venue:</strong> Kumbhakodu Kasturi Acchutta Mandira, Sullia</p>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Kumbhakodu+Kasturi+Acchutta+Bhat+Shashikala+Mandira+Sullia" target="_blank" class="event-map-link">View Directions</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== RSVP SECTION ==================== -->
+        <section id="rsvp" class="section rsvp-section">
+            <div class="container">
+                <div class="rsvp-wrapper reveal">
+                    <div class="section-title-wrapper text-center">
+                        <div class="section-gold-monogram">💌</div>
+                        <h2 class="section-title">RSVP</h2>
+                        <p class="section-subtitle">Please respond by August 10, 2026</p>
+                    </div>
+
+                    <form class="rsvp-form" id="rsvp-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="guest-name">Full Name</label>
+                                <input type="text" id="guest-name" name="name" placeholder="Enter your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="guest-email">Email Address</label>
+                                <input type="email" id="guest-email" name="email" placeholder="yourname@domain.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="guest-phone">Phone Number</label>
+                                <input type="tel" id="guest-phone" name="phone" placeholder="Your phone number">
+                            </div>
+                            <div class="form-group">
+                                <label for="guest-count">Number of Guests</label>
+                                <select id="guest-count" name="guests" required>
+                                    <option value="" disabled selected>Select headcount</option>
+                                    <option value="1">1 Guest</option>
+                                    <option value="2">2 Guests</option>
+                                    <option value="3">3 Guests</option>
+                                    <option value="4">4 Guests</option>
+                                    <option value="5">5+ Guests</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Will you attend?</label>
+                            <div class="attendance-radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="attendance" value="attending" required>
+                                    <span class="custom-radio"></span>
+                                    <span>Joyfully Attend</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="attendance" value="declined">
+                                    <span class="custom-radio"></span>
+                                    <span>Regretfully Decline</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="guest-notes">Wishes, Blessings or Special Requests</label>
+                            <textarea id="guest-notes" name="notes" rows="4" placeholder="Send your blessings..."></textarea>
+                        </div>
+
+                        <div class="form-submit-wrap">
+                            <button type="submit" class="rsvp-btn" id="rsvp-submit-btn">
+                                <span class="btn-text">Submit RSVP</span>
+                                <span class="btn-gold-line"></span>
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Success popup modal -->
+                    <div id="rsvp-success" class="rsvp-success-modal" style="display: none;">
+                        <div class="modal-content">
+                            <span class="modal-gold-emblem">⚜</span>
+                            <h3>Thank You!</h3>
+                            <p>Your RSVP response has been successfully sent. We look forward to celebrating with you!</p>
+                            <button type="button" class="close-modal-btn" id="close-modal-btn">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== FOOTER ==================== -->
+        <footer class="footer">
+            <div class="footer-gold-divider"></div>
+            <div class="footer-content">
+                <h2 class="footer-title">Swapnitha & Ravinandan</h2>
+                <p class="footer-date">August 27, 2026</p>
+                <p class="footer-quote">"Your presence and blessings are the only gifts we're hoping to unwrap."</p>
+                <p class="footer-hashtag">#SwaRaSangama</p>
+                <p class="footer-credit">© 2026 Swapnitha & Ravinandan. All rights reserved.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
