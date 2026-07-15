@@ -152,7 +152,7 @@ img {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: radial-gradient(circle, #FCF9F2 0%, #EFEBE0 100%);
+    background: radial-gradient(circle, #1B3B2B 0%, #0F251A 100%);
     z-index: 5000;
     display: flex;
     justify-content: center;
@@ -160,6 +160,17 @@ img {
     perspective: 1500px;
     overflow: hidden;
     transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), visibility 1.2s ease;
+}
+
+/* Faint gold damask pattern on background */
+.envelope-overlay::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(212, 175, 55, 0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
 }
 
 .envelope-3d-wrapper {
@@ -172,8 +183,8 @@ img {
 }
 
 @keyframes floatingGently {
-    0%, 100% { transform: translateY(0) rotateX(5deg) rotateY(-5deg); }
-    50% { transform: translateY(-12px) rotateX(8deg) rotateY(2deg); }
+    0%, 100% { transform: translateY(0) rotateX(4deg) rotateY(-4deg); }
+    50% { transform: translateY(-12px) rotateX(7deg) rotateY(1deg); }
 }
 
 .envelope-3d {
@@ -190,7 +201,7 @@ img {
     background-color: #F4EFE0;
     border: 1px solid rgba(176, 138, 40, 0.3);
     border-radius: 4px;
-    box-shadow: inset 0 0 30px rgba(176, 138, 40, 0.08);
+    box-shadow: inset 0 0 35px rgba(176, 138, 40, 0.12);
     z-index: 1;
     overflow: hidden;
 }
@@ -215,7 +226,7 @@ img {
     top: 20px;
     background-color: #FFFDF9;
     border: 1px solid rgba(176, 138, 40, 0.45);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
     z-index: 2;
     padding: 30px;
     transform: translateZ(1px);
@@ -238,17 +249,16 @@ img {
     position: relative;
 }
 
+/* SVG-based side and bottom flaps to look grander */
 .envelope-flap-left-3d {
     position: absolute;
     top: 0;
     left: 0;
-    width: 0;
-    height: 0;
-    border-top: 190px solid transparent;
-    border-bottom: 190px solid transparent;
-    border-left: 285px solid #EFEAE0;
+    width: 285px;
+    height: 380px;
     z-index: 4;
     transform: translateZ(5px);
+    pointer-events: none;
     filter: drop-shadow(4px 0 6px rgba(0,0,0,0.03));
 }
 
@@ -256,13 +266,11 @@ img {
     position: absolute;
     top: 0;
     right: 0;
-    width: 0;
-    height: 0;
-    border-top: 190px solid transparent;
-    border-bottom: 190px solid transparent;
-    border-right: 285px solid #EFEAE0;
+    width: 285px;
+    height: 380px;
     z-index: 4;
     transform: translateZ(5px);
+    pointer-events: none;
     filter: drop-shadow(-4px 0 6px rgba(0,0,0,0.03));
 }
 
@@ -270,45 +278,68 @@ img {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 0;
-    height: 0;
-    border-left: 275px solid transparent;
-    border-right: 275px solid transparent;
-    border-bottom: 210px solid #E8E2D5;
+    width: 550px;
+    height: 210px;
     z-index: 5;
     transform: translateZ(10px);
+    pointer-events: none;
     filter: drop-shadow(0 -4px 6px rgba(0,0,0,0.04));
 }
 
+/* Double-sided Top Flap */
 .envelope-flap-top-3d {
     position: absolute;
     top: 0;
     left: 0;
-    width: 0;
-    height: 0;
-    border-left: 275px solid transparent;
-    border-right: 275px solid transparent;
-    border-top: 210px solid #DFD8C9;
+    width: 550px;
+    height: 210px;
     transform-origin: top center;
     z-index: 6;
     transform: translateZ(15px) rotateX(0deg);
-    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), z-index 0.2s 0.4s;
+    transition: transform 0.9s cubic-bezier(0.25, 1, 0.5, 1), z-index 0.2s 0.4s;
+    transform-style: preserve-3d;
+}
+
+.flap-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+.flap-front {
+    z-index: 2;
+    transform: rotateX(0deg);
     filter: drop-shadow(0 4px 8px rgba(0,0,0,0.08));
 }
 
-.envelope-flap-top-3d .wax-seal-gold {
+.flap-back {
+    transform: rotateX(180deg);
+    filter: drop-shadow(0 -4px 8px rgba(0,0,0,0.08));
+}
+
+.flap-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Metallic Wax Seal Gold Button */
+.flap-front .wax-seal-gold {
     position: absolute;
-    top: -140px;
-    left: -40px;
+    bottom: -40px;
+    left: 235px; /* Centered on 550px flap tip */
     width: 80px;
     height: 80px;
     cursor: pointer;
-    transform: translateZ(1px);
+    z-index: 100;
+    transform: translateZ(5px);
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .wax-seal-gold:hover {
-    transform: translateZ(5px) scale(1.1) rotate(5deg);
+    transform: translateZ(10px) scale(1.1) rotate(5deg);
 }
 
 .seal-inner-gold {
@@ -325,6 +356,25 @@ img {
         inset 0 3px 6px rgba(255, 255, 255, 0.6), 
         inset 0 -3px 6px rgba(0, 0, 0, 0.4);
     position: relative;
+    overflow: hidden;
+}
+
+/* Seal Shine Sweep Animation */
+.seal-inner-gold::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    transform: skewX(-25deg);
+    animation: shineSweep 4s infinite ease-in-out;
+}
+
+@keyframes shineSweep {
+    0% { left: -100%; }
+    18%, 100% { left: 150%; }
 }
 
 .seal-text-gold {
