@@ -48,13 +48,17 @@
     <!-- Canvas for floating gold dust particles -->
     <canvas id="gold-canvas"></canvas>
 
-    <!-- ==================== MINIMALIST ENVELOPE GATE ==================== -->
+    <!-- ==================== LUXURY 3D ENVELOPE GATE ==================== -->
     <div id="envelope-overlay" class="envelope-overlay">
-        <div class="envelope-wrapper">
-            <div class="envelope" id="envelope">
-                <div class="envelope-card" id="envelope-card">
-                    <div class="envelope-inner">
-                        <!-- Ornate Corner SVGs for Envelope -->
+        <div class="envelope-3d-wrapper">
+            <div class="envelope-3d" id="envelope-3d">
+                <!-- Inside backing -->
+                <div class="envelope-back-lining"></div>
+                
+                <!-- The Letter inside -->
+                <div class="envelope-letter-card" id="envelope-letter-card">
+                    <div class="letter-card-inner">
+                        <!-- Ornate Corners for Letter inside -->
                         <svg class="corner-ornament top-left" viewBox="0 0 40 40">
                             <path d="M 0,0 L 40,0 C 30,0 25,5 25,15 C 25,25 30,30 40,30 L 40,40 C 20,40 0,20 0,0" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
                             <path d="M 5,5 L 20,5 C 15,5 12,8 12,12 C 12,15 15,18 20,18 C 10,18 5,13 5,5" fill="none" stroke="#B08A28" stroke-width="0.8"/>
@@ -81,21 +85,29 @@
                         <p class="envelope-sub">WE ARE GETTING MARRIED</p>
                         <h2 class="envelope-names">Swapnitha & Ravinandan</h2>
                         <p class="envelope-date">August 27, 2026</p>
-                        
-                        <!-- Circular gold wax seal button -->
-                        <div class="wax-seal" id="wax-seal">
-                            <div class="seal-inner">
-                                <span class="seal-text">OPEN</span>
-                                <div class="seal-border-pulse"></div>
-                            </div>
-                        </div>
+                    </div>
+                </div>
 
-                        <!-- Animated Click Indicator -->
-                        <div class="click-prompt">
-                            <span class="prompt-text">Click Seal to Open</span>
-                            <span class="prompt-arrow">↓</span>
+                <!-- Envelope Front Flaps (Folds over card) -->
+                <div class="envelope-flap-left-3d"></div>
+                <div class="envelope-flap-right-3d"></div>
+                <div class="envelope-flap-bottom-3d"></div>
+                
+                <!-- Envelope Top Flap (Closes with wax seal) -->
+                <div class="envelope-flap-top-3d" id="envelope-flap-top">
+                    <!-- Metallic Wax Seal Gold Button -->
+                    <div class="wax-seal-gold" id="wax-seal">
+                        <div class="seal-inner-gold">
+                            <span class="seal-text-gold">S & R</span>
+                            <div class="seal-gold-pulse"></div>
                         </div>
                     </div>
+                </div>
+
+                <!-- Animated Prompt to Open -->
+                <div class="open-prompt-indicator">
+                    <span class="prompt-text">Click Seal to Open</span>
+                    <span class="prompt-arrow-bounce">↓</span>
                 </div>
             </div>
         </div>

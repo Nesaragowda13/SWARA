@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         audioToggle.addEventListener('click', toggleMusic);
     }
 
-    // === ENVELOPE GATE COVER UNLOCK ===
+    // === LUXURY 3D ENVELOPE GATE COVER UNLOCK ===
     const waxSeal = document.getElementById('wax-seal');
     const envelopeOverlay = document.getElementById('envelope-overlay');
     const mainContent = document.getElementById('main-content');
@@ -83,21 +83,32 @@ document.addEventListener('DOMContentLoaded', () => {
             // Start background music
             playMusic();
             
-            // Add classes for opening transitions
-            envelopeOverlay.classList.add('fade-out');
+            // 1. Flip top flap open
+            envelopeOverlay.classList.add('open-top-flap');
 
+            // 2. Slide letter card out of envelope
+            setTimeout(() => {
+                envelopeOverlay.classList.add('open-letter');
+            }, 600);
+
+            // 3. Zoom away the envelope in perspective
+            setTimeout(() => {
+                envelopeOverlay.classList.add('zoom-out');
+            }, 1800);
+
+            // 4. Reveal main invitation website
             setTimeout(() => {
                 mainContent.style.display = 'block';
                 setTimeout(() => {
                     mainContent.style.opacity = '1';
                     handleScrollReveal();
                 }, 50);
-            }, 1000);
+            }, 2600);
 
-            // Remove overlay from DOM flow
+            // 5. Remove overlay from DOM flow
             setTimeout(() => {
                 envelopeOverlay.style.display = 'none';
-            }, 2200);
+            }, 3800);
         });
     }
 
