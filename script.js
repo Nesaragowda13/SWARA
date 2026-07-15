@@ -73,37 +73,46 @@ document.addEventListener('DOMContentLoaded', () => {
         audioToggle.addEventListener('click', toggleMusic);
     }
 
-    // === ENVELOPE GATE COVER UNLOCK ===
+    // === 3D ENVELOPE GATE COVER UNLOCK ===
     const waxSeal = document.getElementById('wax-seal');
-    const envelope = document.getElementById('envelope');
     const envelopeOverlay = document.getElementById('envelope-overlay');
     const mainContent = document.getElementById('main-content');
 
-    if (waxSeal && envelope && envelopeOverlay && mainContent) {
+    if (waxSeal && envelopeOverlay && mainContent) {
         waxSeal.addEventListener('click', () => {
             // Start background music
             playMusic();
             
-            // Add classes for opening transitions
-            envelopeOverlay.classList.add('fade-out');
+            // 1. Flip top flap open
+            envelopeOverlay.classList.add('open-top-flap');
 
+            // 2. Slide letter card out of envelope
+            setTimeout(() => {
+                envelopeOverlay.classList.add('open-letter');
+            }, 600);
+
+            // 3. Zoom away the envelope in perspective
+            setTimeout(() => {
+                envelopeOverlay.classList.add('zoom-out');
+            }, 1600);
+
+            // 4. Reveal main invitation website
             setTimeout(() => {
                 mainContent.style.display = 'block';
                 setTimeout(() => {
                     mainContent.style.opacity = '1';
-                    // Re-trigger reveal observer
                     handleScrollReveal();
                 }, 50);
-            }, 1000);
+            }, 2400);
 
-            // Remove overlay from DOM flow
+            // 5. Remove overlay from DOM flow
             setTimeout(() => {
                 envelopeOverlay.style.display = 'none';
-            }, 2200);
+            }, 3600);
         });
     }
 
-    // === FLOATING GOLD DUST (CANVAS) ===
+    // === FLOATING GHIBLI LEAVES & PETALS (CANVAS) ===
     const canvas = document.getElementById('gold-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
@@ -116,54 +125,88 @@ document.addEventListener('DOMContentLoaded', () => {
         resizeCanvas();
 
         const particles = [];
-        const maxParticles = 50;
+        const maxParticles = 40;
+        const types = ['leaf', 'petal', 'seed'];
 
-        class GoldParticle {
+        class GhibliParticle {
             constructor() {
+                this.reset(true);
+            }
+
+            reset(init = false) {
                 this.x = Math.random() * canvas.width;
-                this.y = Math.random() * -canvas.height;
-                this.size = Math.random() * 2.5 + 0.8;
-                this.speedY = Math.random() * 0.8 + 0.3;
-                this.speedX = Math.random() * 0.4 - 0.2;
-                this.opacity = Math.random() * 0.5 + 0.3;
+                this.y = init ? Math.random() * canvas.height : -20;
+                this.z = Math.random() * 1.5 + 0.5; // Depth factor
+                this.type = types[Math.floor(Math.random() * types.length)];
+                
+                this.size = (Math.random() * 8 + 4) * this.z;
+                this.speedY = (Math.random() * 0.8 + 0.4) * this.z;
+                this.speedX = (Math.random() * 1.2 - 0.3) * this.z;
+                
+                this.angle = Math.random() * Math.PI * 2;
+                this.angleSpeed = (Math.random() * 0.02 - 0.01) * this.z;
                 this.wobble = Math.random() * Math.PI * 2;
-                this.wobbleSpeed = Math.random() * 0.015 + 0.005;
+                this.wobbleSpeed = Math.random() * 0.01 + 0.005;
+                
+                if (this.type === 'leaf') {
+                    this.color = `rgba(${Math.floor(Math.random() * 30 + 40)}, ${Math.floor(Math.random() * 40 + 120)}, ${Math.floor(Math.random() * 30 + 60)}, ${Math.random() * 0.4 + 0.3})`;
+                } else if (this.type === 'petal') {
+                    this.color = `rgba(${Math.floor(Math.random() * 30 + 225)}, ${Math.floor(Math.random() * 40 + 150)}, ${Math.floor(Math.random() * 30 + 170)}, ${Math.random() * 0.5 + 0.3})`;
+                } else {
+                    this.color = `rgba(255, 255, 255, ${Math.random() * 0.3 + 0.2})`;
+                }
             }
 
             update() {
                 this.y += this.speedY;
                 this.wobble += this.wobbleSpeed;
-                this.x += this.speedX + Math.sin(this.wobble) * 0.3;
+                this.x += this.speedX + Math.sin(this.wobble) * 0.5;
+                this.angle += this.angleSpeed;
 
-                // Reset particle
-                if (this.y > canvas.height + 10 || this.x < -10 || this.x > canvas.width + 10) {
-                    this.y = -10;
-                    this.x = Math.random() * canvas.width;
-                    this.speedY = Math.random() * 0.8 + 0.3;
-                    this.speedX = Math.random() * 0.4 - 0.2;
+                if (this.y > canvas.height + 20 || this.x < -20 || this.x > canvas.width + 20) {
+                    this.reset(false);
                 }
             }
 
             draw() {
                 ctx.save();
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                
-                // Gold glowing gradient colors
-                const glow = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
-                glow.addColorStop(0, `rgba(212, 175, 55, ${this.opacity})`);
-                glow.addColorStop(0.8, `rgba(243, 229, 171, ${this.opacity * 0.6})`);
-                glow.addColorStop(1, 'rgba(212, 175, 55, 0)');
-                
-                ctx.fillStyle = glow;
-                ctx.fill();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle);
+                ctx.fillStyle = this.color;
+
+                if (this.type === 'leaf') {
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, this.size, this.size / 2, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(-this.size, 0);
+                    ctx.lineTo(this.size, 0);
+                    ctx.stroke();
+                } else if (this.type === 'petal') {
+                    ctx.beginPath();
+                    ctx.moveTo(0, -this.size / 2);
+                    ctx.bezierCurveTo(this.size / 2, -this.size, this.size, -this.size / 2, 0, this.size);
+                    ctx.bezierCurveTo(-this.size, -this.size / 2, -this.size / 2, -this.size, 0, -this.size / 2);
+                    ctx.fill();
+                } else {
+                    ctx.beginPath();
+                    ctx.arc(0, 0, 2, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.strokeStyle = this.color;
+                    ctx.lineWidth = 0.5;
+                    ctx.beginPath();
+                    ctx.moveTo(0, 0);
+                    ctx.lineTo(0, this.size);
+                    ctx.stroke();
+                }
                 ctx.restore();
             }
         }
 
-        // Initialize particles
         for (let i = 0; i < maxParticles; i++) {
-            particles.push(new GoldParticle());
+            particles.push(new GhibliParticle());
         }
 
         function animate() {
@@ -176,6 +219,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         animate();
     }
+
+    // === MOUSE MOVE 3D PARALLAX ===
+    const heroSection = document.getElementById('hero');
+    const heroContent = document.querySelector('.hero-content');
+    const heroFrame = document.querySelector('.hero-border-frame');
+
+    if (heroSection) {
+        heroSection.addEventListener('mousemove', (e) => {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            const mouseX = (e.clientX - width / 2) / (width / 2);
+            const mouseY = (e.clientY - height / 2) / (height / 2);
+            
+            if (heroContent) {
+                heroContent.style.transform = `translate3d(${mouseX * 25}px, ${mouseY * 20}px, 0)`;
+            }
+            if (heroFrame) {
+                heroFrame.style.transform = `translate3d(${mouseX * -12}px, ${mouseY * -10}px, 0)`;
+            }
+            heroSection.style.backgroundPosition = `calc(50% + ${mouseX * 15}px) calc(50% + ${mouseY * 10}px)`;
+        });
+
+        heroSection.addEventListener('mouseleave', () => {
+            if (heroContent) heroContent.style.transform = 'translate3d(0, 0, 0)';
+            if (heroFrame) heroFrame.style.transform = 'translate3d(0, 0, 0)';
+            heroSection.style.backgroundPosition = '50% 50%';
+        });
+    }
+
 
     // === COUNTDOWN TIMER ===
     const targetDate = new Date('August 27, 2026 10:57:00').getTime();
