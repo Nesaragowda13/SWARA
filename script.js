@@ -142,10 +142,10 @@ document.addEventListener('DOMContentLoaded', () => {
         resizeCanvas();
 
         const particles = [];
-        const maxParticles = 65;
-        const types = ['leaf', 'petal', 'seed', 'sparkle'];
+        const maxParticles = 80;
+        const types = ['sparks', 'dust', 'shimmer'];
 
-        class GhibliParticle {
+        class GoldDustParticle {
             constructor() {
                 this.reset(true);
             }
@@ -153,35 +153,32 @@ document.addEventListener('DOMContentLoaded', () => {
             reset(init = false) {
                 this.x = Math.random() * canvas.width;
                 this.y = init ? Math.random() * canvas.height : -20;
-                this.z = Math.random() * 1.5 + 0.5; // Depth factor
+                this.z = Math.random() * 1.5 + 0.3; // Depth factor
                 this.type = types[Math.floor(Math.random() * types.length)];
                 
-                this.size = (Math.random() * 8 + 4) * this.z;
-                this.speedY = (Math.random() * 0.8 + 0.4) * this.z;
-                this.speedX = (Math.random() * 1.2 - 0.3) * this.z;
+                this.size = (Math.random() * 5 + 2) * this.z;
+                this.speedY = (Math.random() * 0.4 + 0.2) * this.z; // Slow floating down
+                this.speedX = (Math.random() * 0.6 - 0.15) * this.z;
                 
                 this.angle = Math.random() * Math.PI * 2;
-                this.angleSpeed = (Math.random() * 0.02 - 0.01) * this.z;
+                this.angleSpeed = (Math.random() * 0.015 - 0.007) * this.z;
                 this.wobble = Math.random() * Math.PI * 2;
-                this.wobbleSpeed = Math.random() * 0.01 + 0.005;
+                this.wobbleSpeed = Math.random() * 0.008 + 0.004;
                 
-                if (this.type === 'leaf') {
-                    this.color = `rgba(${Math.floor(Math.random() * 30 + 40)}, ${Math.floor(Math.random() * 40 + 120)}, ${Math.floor(Math.random() * 30 + 60)}, ${Math.random() * 0.4 + 0.3})`;
-                } else if (this.type === 'petal') {
-                    this.color = `rgba(${Math.floor(Math.random() * 30 + 225)}, ${Math.floor(Math.random() * 40 + 150)}, ${Math.floor(Math.random() * 30 + 170)}, ${Math.random() * 0.5 + 0.3})`;
-                } else if (this.type === 'sparkle') {
-                    this.color = `rgba(212, 175, 55, ${Math.random() * 0.6 + 0.4})`;
-                    this.size = (Math.random() * 3 + 1.5) * this.z;
-                    this.speedY = (Math.random() * 0.3 + 0.2) * this.z; // Sparks float slower
-                } else {
-                    this.color = `rgba(255, 255, 255, ${Math.random() * 0.3 + 0.2})`;
-                }
+                // Exquisite premium gold tones
+                const goldTones = [
+                    `rgba(212, 175, 55, ${Math.random() * 0.5 + 0.35})`, // Champagne Gold
+                    `rgba(244, 230, 186, ${Math.random() * 0.6 + 0.4})`, // Light Gold Shimmer
+                    `rgba(184, 144, 32, ${Math.random() * 0.4 + 0.3})`,  // Dark Bronze Gold
+                    `rgba(255, 255, 255, ${Math.random() * 0.5 + 0.3})`   // Sparkling White Glow
+                ];
+                this.color = goldTones[Math.floor(Math.random() * goldTones.length)];
             }
 
             update() {
                 this.y += this.speedY;
                 this.wobble += this.wobbleSpeed;
-                this.x += this.speedX + Math.sin(this.wobble) * 0.5;
+                this.x += this.speedX + Math.sin(this.wobble) * 0.3;
                 this.angle += this.angleSpeed;
 
                 if (this.y > canvas.height + 20 || this.x < -20 || this.x > canvas.width + 20) {
@@ -195,50 +192,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.rotate(this.angle);
                 ctx.fillStyle = this.color;
 
-                if (this.type === 'leaf') {
+                if (this.type === 'sparks') {
+                    // Star sparkle cross
                     ctx.beginPath();
-                    ctx.ellipse(0, 0, this.size, this.size / 2, 0, 0, Math.PI * 2);
+                    ctx.fillRect(-this.size, -0.6, this.size * 2, 1.2);
+                    ctx.fillRect(-0.6, -this.size, 1.2, this.size * 2);
+                    ctx.arc(0, 0, 1, 0, Math.PI * 2);
                     ctx.fill();
-                    ctx.strokeStyle = 'rgba(255,255,255,0.2)';
-                    ctx.lineWidth = 1;
+                } else if (this.type === 'dust') {
+                    // Glowing soft circular particle
                     ctx.beginPath();
-                    ctx.moveTo(-this.size, 0);
-                    ctx.lineTo(this.size, 0);
-                    ctx.stroke();
-                } else if (this.type === 'petal') {
-                    ctx.beginPath();
-                    ctx.moveTo(0, -this.size / 2);
-                    ctx.bezierCurveTo(this.size / 2, -this.size, this.size, -this.size / 2, 0, this.size);
-                    ctx.bezierCurveTo(-this.size, -this.size / 2, -this.size / 2, -this.size, 0, -this.size / 2);
-                    ctx.fill();
-                } else if (this.type === 'sparkle') {
-                    // Draw glowing star-like cross sparkle
-                    ctx.fillStyle = this.color;
-                    ctx.beginPath();
-                    // Horizontal bar
-                    ctx.fillRect(-this.size, -0.7, this.size * 2, 1.4);
-                    // Vertical bar
-                    ctx.fillRect(-0.7, -this.size, 1.4, this.size * 2);
-                    // Center core
-                    ctx.arc(0, 0, 1.2, 0, Math.PI * 2);
+                    ctx.arc(0, 0, this.size, 0, Math.PI * 2);
                     ctx.fill();
                 } else {
+                    // Tiny twinkling dot
                     ctx.beginPath();
-                    ctx.arc(0, 0, 2, 0, Math.PI * 2);
+                    ctx.arc(0, 0, 1.5 * this.z, 0, Math.PI * 2);
                     ctx.fill();
-                    ctx.strokeStyle = this.color;
-                    ctx.lineWidth = 0.5;
-                    ctx.beginPath();
-                    ctx.moveTo(0, 0);
-                    ctx.lineTo(0, this.size);
-                    ctx.stroke();
                 }
                 ctx.restore();
             }
         }
 
         for (let i = 0; i < maxParticles; i++) {
-            particles.push(new GhibliParticle());
+            particles.push(new GoldDustParticle());
         }
 
         function animate() {
