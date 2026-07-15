@@ -48,41 +48,30 @@
     <!-- Canvas for floating gold dust particles -->
     <canvas id="gold-canvas"></canvas>
 
-    <!-- ==================== LUXURY PARTING GATES GATE ==================== -->
+    <!-- ==================== GHIBLI CANVAS ART COVER ==================== -->
     <div id="envelope-overlay" class="envelope-overlay">
-        <!-- Parting Gates -->
-        <div class="gate-panel gate-left">
-            <div class="gate-border-ornament"></div>
-            <!-- Elegant Gold Corner SVGs inside Left Gate -->
-            <svg class="corner-ornament top-left" viewBox="0 0 40 40" style="position: absolute; top: 15px; left: 15px;">
-                <path d="M 0,0 L 40,0 C 30,0 25,5 25,15 C 25,25 30,30 40,30 L 40,40 C 20,40 0,20 0,0" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
-            </svg>
-            <svg class="corner-ornament bottom-left" viewBox="0 0 40 40" style="position: absolute; bottom: 15px; left: 15px;">
-                <path d="M 0,40 L 40,40 C 30,40 25,35 25,25 C 25,15 30,10 40,10 L 40,0 C 20,0 0,20 0,40" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
-            </svg>
-        </div>
-        <div class="gate-panel gate-right">
-            <div class="gate-border-ornament"></div>
-            <!-- Elegant Gold Corner SVGs inside Right Gate -->
-            <svg class="corner-ornament top-right" viewBox="0 0 40 40" style="position: absolute; top: 15px; right: 15px;">
-                <path d="M 40,0 L 0,0 C 10,0 15,5 15,15 C 15,25 10,30 0,30 L 0,40 C 20,40 40,20 40,0" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
-            </svg>
-            <svg class="corner-ornament bottom-right" viewBox="0 0 40 40" style="position: absolute; bottom: 15px; right: 15px;">
-                <path d="M 40,40 L 0,40 C 10,40 15,35 15,25 C 15,15 10,10 0,10 L 0,0 C 20,0 40,20 40,40" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
-            </svg>
-        </div>
-        
-        <!-- Central Seal Button -->
-        <div class="wax-seal-gold-center" id="wax-seal">
-            <div class="seal-inner-gold">
-                <span class="seal-text-gold">S & R</span>
-                <div class="seal-gold-pulse"></div>
+        <div class="canvas-art-container">
+            <!-- 3D Gold Baroque Framed Painting -->
+            <div class="easel-gold-frame" id="easel-frame">
+                <img src="ghibli_couple_temple.jpg" alt="Swapnitha & Ravinandan Temple Painting" class="easel-canvas-img">
+                <div class="frame-glint"></div>
+            </div>
+            
+            <div class="canvas-text-details" id="canvas-details">
+                <p class="invite-pre-title">You are cordially invited to the wedding of</p>
+                <h1 class="invite-couple-names">Swapnitha & Ravinandan</h1>
+                <p class="invite-date-venue">August 27, 2026 • Sullia</p>
+                
+                <button class="btn-enter-invite" id="wax-seal">
+                    <span>Enter Invitation</span>
+                    <div class="btn-shine"></div>
+                </button>
             </div>
         </div>
-
+        
         <!-- Animated click indicator -->
-        <div class="open-prompt-indicator">
-            <span class="prompt-text">Click Seal to Open</span>
+        <div class="open-prompt-indicator" id="open-indicator">
+            <span class="prompt-text">Click Button to Open</span>
             <span class="prompt-arrow-bounce">↓</span>
         </div>
     </div>

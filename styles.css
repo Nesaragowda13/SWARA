@@ -157,158 +157,176 @@ img {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    background: #0B1C13;
-    perspective: 2000px;
-    transform-style: preserve-3d;
-    transition: opacity 1s ease 0.8s, visibility 1s ease 0.8s;
+    background: radial-gradient(circle at center, #1B3B2B 0%, #08130E 100%);
+    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), visibility 1.2s ease;
 }
 
-/* Parting Gates */
-.gate-panel {
-    position: absolute;
-    top: 0;
-    width: 50.5%; /* Faint overlap to avoid center seam bleeding */
-    height: 100%;
-    background: linear-gradient(135deg, #1B3B2B 0%, #0F251A 100%);
-    z-index: 5100;
-    transition: transform 1.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    transform-style: preserve-3d;
-}
-
-.gate-panel::before {
+/* Faint royal damask pattern on backdrop */
+.envelope-overlay::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    background-image: radial-gradient(rgba(212, 175, 55, 0.05) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(212, 175, 55, 0.035) 1px, transparent 1px);
     background-size: 24px 24px;
     pointer-events: none;
 }
 
-.gate-left {
-    left: 0;
-    transform-origin: left center;
-    border-right: 2px solid var(--color-gold);
+.canvas-art-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 580px;
+    padding: 20px;
+    text-align: center;
+    z-index: 100;
 }
 
-.gate-right {
-    right: 0;
-    transform-origin: right center;
-    border-left: 2px solid var(--color-gold);
+/* 3D Gold Baroque Easel Frame */
+.easel-gold-frame {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 
+        0 25px 55px rgba(0, 0, 0, 0.55),
+        0 0 0 6px #D4AF37,
+        0 0 0 9px #B08A28,
+        inset 0 0 20px rgba(0,0,0,0.4);
+    background: #FFFDF9;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s;
+    transform: rotate(-0.5deg);
 }
 
-/* Gold Seam Border ornament */
-.gate-border-ornament {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 12px;
-    background-image: linear-gradient(to bottom, rgba(212, 175, 55, 0.6) 0%, transparent 50%, rgba(212, 175, 55, 0.6) 100%);
-    opacity: 0.8;
-}
-.gate-left .gate-border-ornament { right: 0; }
-.gate-right .gate-border-ornament { left: 0; }
-
-/* Central Wax Seal Button */
-.wax-seal-gold-center {
-    position: absolute;
-    z-index: 5200;
-    width: 90px;
-    height: 90px;
-    cursor: pointer;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+.easel-gold-frame:hover {
+    transform: translateY(-8px) scale(1.03) rotate(1.5deg);
+    box-shadow: 
+        0 35px 65px rgba(0, 0, 0, 0.65),
+        0 0 0 6px #FFFDF3,
+        0 0 0 9px #D4AF37,
+        inset 0 0 25px rgba(0,0,0,0.3);
 }
 
-.wax-seal-gold-center:hover {
-    transform: translate(-50%, -50%) scale(1.1) rotate(5deg);
-}
-
-.seal-inner-gold {
+.easel-canvas-img {
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 35% 35%, #FFFDF3 0%, #D4AF37 40%, #B08A28 85%, #8A6510 100%);
-    border: 2px solid #FFFDF3;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 
-        0 10px 22px rgba(176, 138, 40, 0.45), 
-        inset 0 3px 6px rgba(255, 255, 255, 0.6), 
-        inset 0 -3px 6px rgba(0, 0, 0, 0.4);
-    position: relative;
-    overflow: hidden;
+    object-fit: cover;
+    display: block;
 }
 
-/* Seal Shine Sweep Animation */
-.seal-inner-gold::after {
-    content: '';
+/* Frame Shimmer overlay */
+.frame-glint {
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 80%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+    transform: skewX(-30deg);
+    animation: frameGlintSweep 6s infinite ease-in-out;
+}
+
+@keyframes frameGlintSweep {
+    0% { left: -150%; }
+    15%, 100% { left: 200%; }
+}
+
+/* Typography styles inside Cover */
+.canvas-text-details {
+    opacity: 1;
+    transform: translateY(0);
+    transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.2s;
+}
+
+.invite-pre-title {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    color: var(--color-gold-light);
+    text-transform: uppercase;
+    margin-top: 35px;
+    font-weight: 500;
+}
+
+.invite-couple-names {
+    font-family: var(--font-heading);
+    font-size: 2.1rem;
+    font-weight: 400;
+    color: #FFFDF9;
+    margin: 14px 0;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    letter-spacing: 1px;
+}
+
+.invite-date-venue {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    color: #EFEBE0;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+/* Premium Enter Button */
+.btn-enter-invite {
+    position: relative;
+    background: linear-gradient(135deg, #D4AF37 0%, #B08A28 100%);
+    border: 1px solid #FFFDF3;
+    color: #FFFFFF;
+    padding: 14px 38px;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 30px;
+    box-shadow: 0 8px 25px rgba(176, 138, 40, 0.4);
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s;
+}
+
+.btn-enter-invite:hover {
+    transform: scale(1.06);
+    box-shadow: 0 12px 30px rgba(176, 138, 40, 0.6);
+}
+
+.btn-shine {
     position: absolute;
     top: 0;
     left: -100%;
-    width: 50%;
+    width: 40%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
-    transform: skewX(-25deg);
-    animation: shineSweep 4s infinite ease-in-out;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    transform: skewX(-20deg);
+    animation: btnShineSweep 3.5s infinite ease-in-out;
 }
 
-@keyframes shineSweep {
+@keyframes btnShineSweep {
     0% { left: -100%; }
-    18%, 100% { left: 150%; }
-}
-
-.seal-text-gold {
-    font-family: var(--font-heading);
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #FFFDF9;
-    letter-spacing: 2px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-.seal-gold-pulse {
-    position: absolute;
-    top: -8px;
-    left: -8px;
-    right: -8px;
-    bottom: -8px;
-    border-radius: 50%;
-    border: 1px dashed #D4AF37;
-    opacity: 0;
-    animation: goldPulseRing 2s infinite;
-}
-
-@keyframes goldPulseRing {
-    0% { transform: scale(1); opacity: 0.8; }
-    100% { transform: scale(1.25); opacity: 0; }
+    22%, 100% { left: 150%; }
 }
 
 .open-prompt-indicator {
     position: absolute;
-    bottom: 40px;
+    bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
-    opacity: 0.85;
+    gap: 4px;
+    opacity: 0.7;
     animation: pulsePrompt 2.2s infinite ease-in-out;
     pointer-events: none;
-    z-index: 5200;
+    z-index: 100;
     transition: opacity 0.4s ease;
 }
 
 .prompt-text {
     font-family: var(--font-sans);
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--color-gold-light);
@@ -316,7 +334,7 @@ img {
 
 .prompt-arrow-bounce {
     animation: bounceDownArrow 1.5s infinite;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--color-gold);
 }
 
@@ -326,34 +344,47 @@ img {
 }
 
 @keyframes pulsePrompt {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.9; }
 }
 
-/* Open Gates 3D swing door transition */
-.envelope-overlay.open-gates .gate-left {
-    transform: rotateY(-115deg);
-}
-
-.envelope-overlay.open-gates .gate-right {
-    transform: rotateY(115deg);
-}
-
-.envelope-overlay.open-gates .wax-seal-gold-center {
-    transform: translate(-50%, -50%) scale(0) rotate(-45deg);
+/* Open transition animations */
+.envelope-overlay.open-gates {
     opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.envelope-overlay.open-gates .easel-gold-frame {
+    transform: translateY(-100px) scale(0.9) rotate(-3deg);
+    opacity: 0;
+    transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.2s;
+}
+
+.envelope-overlay.open-gates .canvas-text-details {
+    transform: translateY(60px);
+    opacity: 0;
+    transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.2s;
 }
 
 .envelope-overlay.open-gates .open-prompt-indicator {
     opacity: 0;
 }
 
-/* Fade out gates card overlay clickability */
-.envelope-overlay.open-gates {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+@media (max-width: 576px) {
+    .easel-gold-frame {
+        width: 250px;
+        height: 250px;
+        box-shadow: 
+            0 15px 35px rgba(0, 0, 0, 0.45),
+            0 0 0 5px #D4AF37,
+            0 0 0 7px #B08A28;
+    }
+    .invite-couple-names {
+        font-size: 1.6rem;
+    }
 }
+
 
 
 
