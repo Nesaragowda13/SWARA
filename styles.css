@@ -152,194 +152,79 @@ img {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: radial-gradient(circle, #1B3B2B 0%, #0F251A 100%);
     z-index: 5000;
     display: flex;
     justify-content: center;
     align-items: center;
-    perspective: 1500px;
     overflow: hidden;
-    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), visibility 1.2s ease;
+    background: #0B1C13;
+    transition: opacity 1s ease, visibility 1s ease;
 }
 
-/* Faint gold damask pattern on background */
-.envelope-overlay::before {
+/* Parting Gates */
+.gate-panel {
+    position: absolute;
+    top: 0;
+    width: 50.5%; /* Faint overlap to avoid center seam bleeding */
+    height: 100%;
+    background: linear-gradient(135deg, #1B3B2B 0%, #0F251A 100%);
+    z-index: 5100;
+    transition: transform 1.4s cubic-bezier(0.77, 0, 0.175, 1);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.gate-panel::before {
     content: '';
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-image: radial-gradient(rgba(212, 175, 55, 0.04) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(212, 175, 55, 0.05) 1px, transparent 1px);
     background-size: 24px 24px;
     pointer-events: none;
 }
 
-.envelope-3d-wrapper {
-    width: 550px;
-    height: 380px;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-    animation: floatingGently 6s ease-in-out infinite;
-}
-
-@keyframes floatingGently {
-    0%, 100% { transform: translateY(0) rotateX(4deg) rotateY(-4deg); }
-    50% { transform: translateY(-12px) rotateX(7deg) rotateY(1deg); }
-}
-
-.envelope-3d {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    transform-style: preserve-3d;
-}
-
-.envelope-back-lining {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: #F4EFE0;
-    border: 1px solid rgba(176, 138, 40, 0.3);
-    border-radius: 4px;
-    box-shadow: inset 0 0 35px rgba(176, 138, 40, 0.12);
-    z-index: 1;
-    overflow: hidden;
-}
-
-.envelope-back-lining::after {
-    content: '';
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    border: 1px solid rgba(176, 138, 40, 0.25);
-    background-image: radial-gradient(rgba(176, 138, 40, 0.15) 1px, transparent 1px);
-    background-size: 16px 16px;
-}
-
-.envelope-letter-card {
-    position: absolute;
-    width: 510px;
-    height: 340px;
-    left: 20px;
-    top: 20px;
-    background-color: #FFFDF9;
-    border: 1px solid rgba(176, 138, 40, 0.45);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-    z-index: 2;
-    padding: 30px;
-    transform: translateZ(1px);
-    transition: transform 1.2s 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-    transform-style: preserve-3d;
-}
-
-.letter-card-inner {
-    border: 1px solid rgba(176, 138, 40, 0.35);
-    outline: 3px double rgba(176, 138, 40, 0.15);
-    outline-offset: -8px;
-    width: 100%;
-    height: 100%;
-    padding: 25px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-/* SVG-based side and bottom flaps to look grander */
-.envelope-flap-left-3d {
-    position: absolute;
-    top: 0;
+.gate-left {
     left: 0;
-    width: 285px;
-    height: 380px;
-    z-index: 4;
-    transform: translateZ(5px);
-    pointer-events: none;
-    filter: drop-shadow(4px 0 6px rgba(0,0,0,0.03));
+    transform-origin: left center;
+    border-right: 2px solid var(--color-gold);
 }
 
-.envelope-flap-right-3d {
-    position: absolute;
-    top: 0;
+.gate-right {
     right: 0;
-    width: 285px;
-    height: 380px;
-    z-index: 4;
-    transform: translateZ(5px);
-    pointer-events: none;
-    filter: drop-shadow(-4px 0 6px rgba(0,0,0,0.03));
+    transform-origin: right center;
+    border-left: 2px solid var(--color-gold);
 }
 
-.envelope-flap-bottom-3d {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 550px;
-    height: 210px;
-    z-index: 5;
-    transform: translateZ(10px);
-    pointer-events: none;
-    filter: drop-shadow(0 -4px 6px rgba(0,0,0,0.04));
-}
-
-/* Double-sided Top Flap */
-.envelope-flap-top-3d {
+/* Gold Seam Border ornament */
+.gate-border-ornament {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 550px;
-    height: 210px;
-    transform-origin: top center;
-    z-index: 6;
-    transform: translateZ(15px) rotateX(0deg);
-    transition: transform 0.9s cubic-bezier(0.25, 1, 0.5, 1), z-index 0.2s 0.4s;
-    transform-style: preserve-3d;
+    bottom: 0;
+    width: 12px;
+    background-image: linear-gradient(to bottom, rgba(212, 175, 55, 0.6) 0%, transparent 50%, rgba(212, 175, 55, 0.6) 100%);
+    opacity: 0.8;
 }
+.gate-left .gate-border-ornament { right: 0; }
+.gate-right .gate-border-ornament { left: 0; }
 
-.flap-face {
+/* Central Wax Seal Button */
+.wax-seal-gold-center {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    transform-style: preserve-3d;
-}
-
-.flap-front {
-    z-index: 2;
-    transform: rotateX(0deg);
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.08));
-}
-
-.flap-back {
-    transform: rotateX(180deg);
-    filter: drop-shadow(0 -4px 8px rgba(0,0,0,0.08));
-}
-
-.flap-svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-
-/* Metallic Wax Seal Gold Button */
-.flap-front .wax-seal-gold {
-    position: absolute;
-    bottom: -40px;
-    left: 235px; /* Centered on 550px flap tip */
-    width: 80px;
-    height: 80px;
+    z-index: 5200;
+    width: 90px;
+    height: 90px;
     cursor: pointer;
-    z-index: 100;
-    transform: translateZ(5px);
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
 }
 
-.wax-seal-gold:hover {
-    transform: translateZ(10px) scale(1.1) rotate(5deg);
+.wax-seal-gold-center:hover {
+    transform: translate(-50%, -50%) scale(1.1) rotate(5deg);
 }
 
 .seal-inner-gold {
@@ -379,7 +264,7 @@ img {
 
 .seal-text-gold {
     font-family: var(--font-heading);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 600;
     color: #FFFDF9;
     letter-spacing: 2px;
@@ -405,7 +290,7 @@ img {
 
 .open-prompt-indicator {
     position: absolute;
-    bottom: -90px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -415,13 +300,22 @@ img {
     opacity: 0.85;
     animation: pulsePrompt 2.2s infinite ease-in-out;
     pointer-events: none;
-    z-index: 100;
+    z-index: 5200;
+    transition: opacity 0.4s ease;
+}
+
+.prompt-text {
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-gold-light);
 }
 
 .prompt-arrow-bounce {
     animation: bounceDownArrow 1.5s infinite;
     font-size: 1.2rem;
-    color: var(--color-gold-dark);
+    color: var(--color-gold);
 }
 
 @keyframes bounceDownArrow {
@@ -434,26 +328,24 @@ img {
     50% { opacity: 1; }
 }
 
-.envelope-overlay.open-top-flap .envelope-flap-top-3d {
-    transform: translateZ(5px) rotateX(180deg);
-    z-index: 3;
+/* Open Gates transition */
+.envelope-overlay.open-gates .gate-left {
+    transform: translateX(-100%);
 }
 
-.envelope-overlay.open-letter .envelope-letter-card {
-    transform: translateY(-280px) translateZ(80px) scale(1.05);
-    z-index: 50;
-    box-shadow: 0 15px 45px rgba(0,0,0,0.15);
+.envelope-overlay.open-gates .gate-right {
+    transform: translateX(100%);
 }
 
-.envelope-overlay.zoom-out {
+.envelope-overlay.open-gates .wax-seal-gold-center {
+    transform: translate(-50%, -50%) scale(0) rotate(-45deg);
     opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
 }
 
-.envelope-overlay.zoom-out .envelope-3d-wrapper {
-    transform: scale(1.4) translateZ(150px) rotateX(15deg);
+.envelope-overlay.open-gates .open-prompt-indicator {
+    opacity: 0;
 }
+
 
 
 
@@ -1613,13 +1505,9 @@ img {
         font-size: 2.8rem;
     }
     
-    .couple-grid {
-        flex-direction: column;
-        gap: 40px;
-    }
-    
-    .couple-mid-divider {
-        display: none;
+    .couple-ghibli-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
     }
     
     .timeline-line-vertical {
