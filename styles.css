@@ -663,6 +663,120 @@ img {
     margin: 15px 0;
 }
 
+/* ==================== PLAYFUL PHILOSOPHY SECTION ==================== */
+.philosophy-wrapper {
+    margin-top: 80px;
+    padding-top: 60px;
+    border-top: 1px dashed rgba(212, 175, 55, 0.25);
+}
+
+.philosophy-content {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 50px;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-gray-border);
+    padding: 40px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.015);
+    position: relative;
+}
+
+.philosophy-text-wrap {
+    text-align: center;
+    padding: 20px;
+}
+
+.philosophy-quote-intro {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--color-gray-dark);
+    margin-bottom: 5px;
+}
+
+.philosophy-quote {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: #A30029; /* Romantic Crimson from meme */
+    margin: 10px 0;
+    line-height: 1.25;
+    letter-spacing: 0.5px;
+}
+
+.philosophy-quote-outro {
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-gold-dark);
+    margin-bottom: 25px;
+}
+
+.philosophy-rule {
+    display: inline-block;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 12px 24px;
+    background-color: rgba(212, 175, 55, 0.03);
+}
+
+.rule-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-gray-dark);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.rule-desc {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--color-charcoal);
+    font-weight: 500;
+}
+
+.philosophy-image-wrap {
+    position: relative;
+    border: 8px solid var(--color-offwhite);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.philosophy-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.philosophy-border-accent {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    pointer-events: none;
+    z-index: -1;
+}
+
+@media (max-width: 768px) {
+    .philosophy-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 30px 20px;
+    }
+    
+    .philosophy-image-wrap {
+        order: -1; /* Image on top of text on mobile */
+    }
+    
+    .philosophy-quote {
+        font-size: 1.7rem;
+    }
+}
+
 /* ==================== OUR STORY SECTION ==================== */
 .story-section {
     background-color: var(--color-cream);
