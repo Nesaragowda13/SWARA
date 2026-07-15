@@ -114,8 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
         resizeCanvas();
 
         const particles = [];
-        const maxParticles = 40;
-        const types = ['leaf', 'petal', 'seed'];
+        const maxParticles = 65;
+        const types = ['leaf', 'petal', 'seed', 'sparkle'];
 
         class GhibliParticle {
             constructor() {
@@ -141,6 +141,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.color = `rgba(${Math.floor(Math.random() * 30 + 40)}, ${Math.floor(Math.random() * 40 + 120)}, ${Math.floor(Math.random() * 30 + 60)}, ${Math.random() * 0.4 + 0.3})`;
                 } else if (this.type === 'petal') {
                     this.color = `rgba(${Math.floor(Math.random() * 30 + 225)}, ${Math.floor(Math.random() * 40 + 150)}, ${Math.floor(Math.random() * 30 + 170)}, ${Math.random() * 0.5 + 0.3})`;
+                } else if (this.type === 'sparkle') {
+                    this.color = `rgba(212, 175, 55, ${Math.random() * 0.6 + 0.4})`;
+                    this.size = (Math.random() * 3 + 1.5) * this.z;
+                    this.speedY = (Math.random() * 0.3 + 0.2) * this.z; // Sparks float slower
                 } else {
                     this.color = `rgba(255, 255, 255, ${Math.random() * 0.3 + 0.2})`;
                 }
@@ -178,6 +182,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctx.moveTo(0, -this.size / 2);
                     ctx.bezierCurveTo(this.size / 2, -this.size, this.size, -this.size / 2, 0, this.size);
                     ctx.bezierCurveTo(-this.size, -this.size / 2, -this.size / 2, -this.size, 0, -this.size / 2);
+                    ctx.fill();
+                } else if (this.type === 'sparkle') {
+                    // Draw glowing star-like cross sparkle
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    // Horizontal bar
+                    ctx.fillRect(-this.size, -0.7, this.size * 2, 1.4);
+                    // Vertical bar
+                    ctx.fillRect(-0.7, -this.size, 1.4, this.size * 2);
+                    // Center core
+                    ctx.arc(0, 0, 1.2, 0, Math.PI * 2);
                     ctx.fill();
                 } else {
                     ctx.beginPath();

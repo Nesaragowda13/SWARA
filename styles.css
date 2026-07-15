@@ -1570,3 +1570,82 @@ img {
         font-size: 1.5rem;
     }
 }
+
+/* ==================== GRAND DECORATIVE ORNAMENTS ==================== */
+.corner-ornament {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    pointer-events: none;
+    z-index: 15;
+}
+.corner-ornament.top-left { top: -2px; left: -2px; }
+.corner-ornament.top-right { top: -2px; right: -2px; }
+.corner-ornament.bottom-left { bottom: -2px; left: -2px; }
+.corner-ornament.bottom-right { bottom: -2px; right: -2px; }
+
+/* Grand double-line borders for main cards */
+.couple-details-card, .event-card, .timeline-card {
+    border: 1px solid rgba(176, 138, 40, 0.4) !important;
+    outline: 3px double rgba(176, 138, 40, 0.2);
+    outline-offset: -8px;
+    background-image: radial-gradient(rgba(212, 175, 55, 0.015) 1px, transparent 1px), linear-gradient(135deg, #FFFDFB 0%, #FAF5E6 100%) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* Ornate Envelope card double line border */
+.envelope-inner {
+    border: 1px solid rgba(176, 138, 40, 0.4) !important;
+    outline: 3px double rgba(176, 138, 40, 0.2);
+    outline-offset: -8px;
+}
+
+/* Redesigned Grand Title Dividers */
+.section-title::after {
+    content: '⚜   ❖   ⚜';
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    color: var(--color-gold-dark);
+    margin: 15px auto 0;
+    letter-spacing: 12px;
+    text-align: center;
+    display: block;
+    background: none !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+/* Monogram decoration */
+.monogram-logo::after {
+    content: '⚜';
+    display: block;
+    font-size: 1.1rem;
+    color: var(--color-gold-dark);
+    margin-top: 8px;
+    letter-spacing: normal;
+}
+
+/* Ornate divider line in envelope */
+.divider-gold-line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 auto 20px !important;
+}
+.divider-gold-line::after {
+    content: '❦   ⚜   ❦';
+    font-size: 0.95rem;
+    color: var(--color-gold-dark);
+    letter-spacing: 6px;
+}
+
+/* Hero frame double outline */
+.hero-border-frame {
+    border: 1px solid rgba(176, 138, 40, 0.4) !important;
+    outline: 1px dashed rgba(176, 138, 40, 0.2);
+    outline-offset: -8px;
+}
+
