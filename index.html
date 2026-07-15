@@ -48,31 +48,41 @@
     <!-- Canvas for floating gold dust particles -->
     <canvas id="gold-canvas"></canvas>
 
-    <!-- ==================== GHIBLI CANVAS ART COVER ==================== -->
+    <!-- ==================== INTERACTIVE 3D ENVELOPE COVER ==================== -->
     <div id="envelope-overlay" class="envelope-overlay">
-        <div class="canvas-art-container">
-            <!-- 3D Gold Baroque Framed Painting -->
-            <div class="easel-gold-frame" id="easel-frame">
-                <img src="ghibli_couple_temple.jpg" alt="Swapnitha & Ravinandan Temple Painting" class="easel-canvas-img">
-                <div class="frame-glint"></div>
+        <div class="envelope-wrapper" id="envelope-wrapper">
+            <div class="envelope" id="envelope">
+                <div class="envelope-flap back-flap"></div>
+                <div class="envelope-card" id="envelope-card">
+                    <div class="card-inner">
+                        <div class="card-image-frame">
+                            <img src="ghibli_couple_temple.jpg" alt="Swapnitha & Ravinandan Temple Painting" class="card-canvas-img">
+                        </div>
+                        <div class="card-text-details">
+                            <p class="card-pre-title">You are cordially invited to the wedding of</p>
+                            <h1 class="card-couple-names">Swapnitha & Ravinandan</h1>
+                            <p class="card-date-venue">August 27, 2026 • Sullia</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="envelope-flap left-flap"></div>
+                <div class="envelope-flap right-flap"></div>
+                <div class="envelope-flap bottom-flap"></div>
+                <div class="envelope-flap top-flap" id="top-flap"></div>
             </div>
             
-            <div class="canvas-text-details" id="canvas-details">
-                <p class="invite-pre-title">You are cordially invited to the wedding of</p>
-                <h1 class="invite-couple-names">Swapnitha & Ravinandan</h1>
-                <p class="invite-date-venue">August 27, 2026 • Sullia</p>
-                
-                <button class="btn-enter-invite" id="wax-seal">
-                    <span>Enter Invitation</span>
-                    <div class="btn-shine"></div>
-                </button>
+            <!-- Wax Seal Button & Glow -->
+            <div class="wax-seal-btn" id="wax-seal">
+                <div class="wax-seal-circle">
+                    <span class="wax-seal-monogram">S&R</span>
+                </div>
+                <div class="wax-seal-glow"></div>
             </div>
-        </div>
-        
-        <!-- Animated click indicator -->
-        <div class="open-prompt-indicator" id="open-indicator">
-            <span class="prompt-text">Click Button to Open</span>
-            <span class="prompt-arrow-bounce">↓</span>
+            
+            <div class="open-prompt-indicator" id="open-indicator">
+                <span class="prompt-text">Tap Wax Seal to Open</span>
+                <span class="prompt-arrow-bounce">↓</span>
+            </div>
         </div>
     </div>
 

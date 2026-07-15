@@ -73,9 +73,13 @@ document.addEventListener('DOMContentLoaded', () => {
         audioToggle.addEventListener('click', toggleMusic);
     }
 
-    // === LUXURY PARTING GATES COVER UNLOCK ===
+    // === LUXURY 3D ENVELOPE COVER UNLOCK ===
     const waxSeal = document.getElementById('wax-seal');
     const envelopeOverlay = document.getElementById('envelope-overlay');
+    const envelopeWrapper = document.getElementById('envelope-wrapper');
+    const envelope = document.getElementById('envelope');
+    const envelopeCard = document.getElementById('envelope-card');
+    const openIndicator = document.getElementById('open-indicator');
     const mainContent = document.getElementById('main-content');
 
     if (waxSeal && envelopeOverlay && mainContent) {
@@ -83,22 +87,45 @@ document.addEventListener('DOMContentLoaded', () => {
             // Play background music
             playMusic();
             
-            // 1. Slide gates open
-            envelopeOverlay.classList.add('open-gates');
+            // Phase 1: Fade/shrink the wax seal & hide click prompt
+            waxSeal.classList.add('open-seal');
+            if (openIndicator) {
+                openIndicator.style.opacity = '0';
+            }
 
-            // 2. Reveal main invitation website
+            // Phase 2: Flip the top flap open (after seal is gone)
             setTimeout(() => {
+                if (envelope) {
+                    envelope.classList.add('open-flap');
+                }
+            }, 600);
+
+            // Phase 3: Slide the card up out of the envelope
+            setTimeout(() => {
+                if (envelopeCard) {
+                    envelopeCard.classList.add('slide-card');
+                }
+            }, 1400);
+
+            // Phase 4: Zoom out the envelope, fade in the main content page
+            setTimeout(() => {
+                if (envelopeWrapper) {
+                    envelopeWrapper.classList.add('fade-envelope');
+                }
+                
+                envelopeOverlay.style.opacity = '0';
+                
                 mainContent.style.display = 'block';
                 setTimeout(() => {
                     mainContent.style.opacity = '1';
                     handleScrollReveal();
                 }, 50);
-            }, 1200);
+            }, 2400);
 
-            // 3. Remove overlay from DOM flow
+            // Phase 5: Completely remove envelope overlay from DOM flow
             setTimeout(() => {
                 envelopeOverlay.style.display = 'none';
-            }, 2500);
+            }, 3600);
         });
     }
 
