@@ -279,48 +279,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     handleScrollReveal();
 
-    // === RSVP FORM PERSISTENCE & MODAL ===
-    const rsvpForm = document.getElementById('rsvp-form');
-    const rsvpSuccess = document.getElementById('rsvp-success');
-    const closeModalBtn = document.getElementById('close-modal-btn');
 
-    if (rsvpForm && rsvpSuccess) {
-        rsvpForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            // Extract values
-            const formData = {
-                name: document.getElementById('guest-name').value,
-                email: document.getElementById('guest-email').value,
-                phone: document.getElementById('guest-phone').value,
-                guests: document.getElementById('guest-count').value,
-                attendance: rsvpForm.querySelector('input[name="attendance"]:checked').value,
-                notes: document.getElementById('guest-notes').value,
-                timestamp: new Date().toISOString()
-            };
-
-            // Save locally
-            const rsvps = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
-            rsvps.push(formData);
-            localStorage.setItem('wedding_rsvps', JSON.stringify(rsvps));
-
-            console.log("RSVP Saved:", formData);
-
-            // Display popup success modal
-            rsvpSuccess.style.display = 'flex';
-            
-            // Reset form fields
-            rsvpForm.reset();
-        });
-    }
-
-    if (closeModalBtn && rsvpSuccess) {
-        closeModalBtn.addEventListener('click', () => {
-            rsvpSuccess.style.opacity = '0';
-            setTimeout(() => {
-                rsvpSuccess.style.display = 'none';
-                rsvpSuccess.style.opacity = '1';
-            }, 300);
-        });
-    }
 });

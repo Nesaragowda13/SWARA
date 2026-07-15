@@ -85,7 +85,6 @@
                     <a href="#couple" class="nav-link">Couple</a>
                     <a href="#story" class="nav-link">Our Story</a>
                     <a href="#events" class="nav-link">Events</a>
-                    <a href="#rsvp" class="nav-link">RSVP</a>
                 </nav>
                 <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation Menu">
                     <span class="bar"></span>
@@ -317,87 +316,6 @@
             </div>
         </section>
 
-        <!-- ==================== RSVP SECTION ==================== -->
-        <section id="rsvp" class="section rsvp-section">
-            <div class="container">
-                <div class="rsvp-wrapper reveal">
-                    <div class="section-title-wrapper text-center">
-                        <div class="section-gold-monogram">💌</div>
-                        <h2 class="section-title">RSVP</h2>
-                        <p class="section-subtitle">Please respond by August 10, 2026</p>
-                    </div>
-
-                    <form class="rsvp-form" id="rsvp-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="guest-name">Full Name</label>
-                                <input type="text" id="guest-name" name="name" placeholder="Enter your name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="guest-email">Email Address</label>
-                                <input type="email" id="guest-email" name="email" placeholder="yourname@domain.com" required>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="guest-phone">Phone Number</label>
-                                <input type="tel" id="guest-phone" name="phone" placeholder="Your phone number">
-                            </div>
-                            <div class="form-group">
-                                <label for="guest-count">Number of Guests</label>
-                                <select id="guest-count" name="guests" required>
-                                    <option value="" disabled selected>Select headcount</option>
-                                    <option value="1">1 Guest</option>
-                                    <option value="2">2 Guests</option>
-                                    <option value="3">3 Guests</option>
-                                    <option value="4">4 Guests</option>
-                                    <option value="5">5+ Guests</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Will you attend?</label>
-                            <div class="attendance-radio-group">
-                                <label class="radio-label">
-                                    <input type="radio" name="attendance" value="attending" required>
-                                    <span class="custom-radio"></span>
-                                    <span>Joyfully Attend</span>
-                                </label>
-                                <label class="radio-label">
-                                    <input type="radio" name="attendance" value="declined">
-                                    <span class="custom-radio"></span>
-                                    <span>Regretfully Decline</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="guest-notes">Wishes, Blessings or Special Requests</label>
-                            <textarea id="guest-notes" name="notes" rows="4" placeholder="Send your blessings..."></textarea>
-                        </div>
-
-                        <div class="form-submit-wrap">
-                            <button type="submit" class="rsvp-btn" id="rsvp-submit-btn">
-                                <span class="btn-text">Submit RSVP</span>
-                                <span class="btn-gold-line"></span>
-                            </button>
-                        </div>
-                    </form>
-
-                    <!-- Success popup modal -->
-                    <div id="rsvp-success" class="rsvp-success-modal" style="display: none;">
-                        <div class="modal-content">
-                            <span class="modal-gold-emblem">⚜</span>
-                            <h3>Thank You!</h3>
-                            <p>Your RSVP response has been successfully sent. We look forward to celebrating with you!</p>
-                            <button type="button" class="close-modal-btn" id="close-modal-btn">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- ==================== HOSTS SECTION ==================== -->
         <section class="hosts-section">
