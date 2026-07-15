@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         audioToggle.addEventListener('click', toggleMusic);
     }
 
-    // === 3D ENVELOPE GATE COVER UNLOCK ===
+    // === ENVELOPE GATE COVER UNLOCK ===
     const waxSeal = document.getElementById('wax-seal');
     const envelopeOverlay = document.getElementById('envelope-overlay');
     const mainContent = document.getElementById('main-content');
@@ -83,32 +83,21 @@ document.addEventListener('DOMContentLoaded', () => {
             // Start background music
             playMusic();
             
-            // 1. Flip top flap open
-            envelopeOverlay.classList.add('open-top-flap');
+            // Add classes for opening transitions
+            envelopeOverlay.classList.add('fade-out');
 
-            // 2. Slide letter card out of envelope
-            setTimeout(() => {
-                envelopeOverlay.classList.add('open-letter');
-            }, 600);
-
-            // 3. Zoom away the envelope in perspective
-            setTimeout(() => {
-                envelopeOverlay.classList.add('zoom-out');
-            }, 1600);
-
-            // 4. Reveal main invitation website
             setTimeout(() => {
                 mainContent.style.display = 'block';
                 setTimeout(() => {
                     mainContent.style.opacity = '1';
                     handleScrollReveal();
                 }, 50);
-            }, 2400);
+            }, 1000);
 
-            // 5. Remove overlay from DOM flow
+            // Remove overlay from DOM flow
             setTimeout(() => {
                 envelopeOverlay.style.display = 'none';
-            }, 3600);
+            }, 2200);
         });
     }
 
@@ -220,33 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
         animate();
     }
 
-    // === MOUSE MOVE 3D PARALLAX ===
-    const heroSection = document.getElementById('hero');
-    const heroContent = document.querySelector('.hero-content');
-    const heroFrame = document.querySelector('.hero-border-frame');
 
-    if (heroSection) {
-        heroSection.addEventListener('mousemove', (e) => {
-            const width = window.innerWidth;
-            const height = window.innerHeight;
-            const mouseX = (e.clientX - width / 2) / (width / 2);
-            const mouseY = (e.clientY - height / 2) / (height / 2);
-            
-            if (heroContent) {
-                heroContent.style.transform = `translate3d(${mouseX * 25}px, ${mouseY * 20}px, 0)`;
-            }
-            if (heroFrame) {
-                heroFrame.style.transform = `translate3d(${mouseX * -12}px, ${mouseY * -10}px, 0)`;
-            }
-            heroSection.style.backgroundPosition = `calc(50% + ${mouseX * 15}px) calc(50% + ${mouseY * 10}px)`;
-        });
-
-        heroSection.addEventListener('mouseleave', () => {
-            if (heroContent) heroContent.style.transform = 'translate3d(0, 0, 0)';
-            if (heroFrame) heroFrame.style.transform = 'translate3d(0, 0, 0)';
-            heroSection.style.backgroundPosition = '50% 50%';
-        });
-    }
 
 
     // === COUNTDOWN TIMER ===

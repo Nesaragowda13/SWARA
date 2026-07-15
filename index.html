@@ -48,35 +48,24 @@
     <!-- Canvas for floating gold dust particles -->
     <canvas id="gold-canvas"></canvas>
 
-    <!-- ==================== 3D WHIMSICAL ENVELOPE GATE ==================== -->
-    <div id="envelope-overlay" class="envelope-overlay-3d">
-        <div class="envelope-wrapper-3d">
-            <div class="envelope-3d" id="envelope-3d">
-                <div class="envelope-front"></div>
-                
-                <!-- Envelope Flaps -->
-                <div class="envelope-flap-top" id="envelope-flap-top">
-                    <!-- Wax seal button -->
-                    <div class="wax-seal" id="wax-seal">
-                        <div class="seal-inner">
-                            <span class="seal-text">S & R</span>
-                            <div class="seal-border-pulse"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="envelope-flap-left"></div>
-                <div class="envelope-flap-right"></div>
-                <div class="envelope-flap-bottom"></div>
-                
-                <!-- The Letter inside -->
-                <div class="envelope-letter" id="envelope-letter">
-                    <div class="letter-inner">
-                        <p class="letter-sub">You are cordially invited</p>
-                        <h2 class="letter-names">Swapnitha<br>&<br>Ravinandan</h2>
-                        <p class="letter-date">August 27, 2026</p>
-                        <div class="letter-arrow-indicator">
-                            <span class="arrow-text">Click Seal to Open</span>
-                            <span class="bounce-arrow">↓</span>
+    <!-- ==================== MINIMALIST ENVELOPE GATE ==================== -->
+    <div id="envelope-overlay" class="envelope-overlay">
+        <div class="envelope-wrapper">
+            <div class="envelope" id="envelope">
+                <div class="envelope-card" id="envelope-card">
+                    <div class="envelope-inner">
+                        <div class="monogram-logo">S & R</div>
+                        <div class="divider-gold-line"></div>
+                        <p class="envelope-sub">WE ARE GETTING MARRIED</p>
+                        <h2 class="envelope-names">Swapnitha & Ravinandan</h2>
+                        <p class="envelope-date">August 27, 2026</p>
+                        
+                        <!-- Circular gold wax seal button -->
+                        <div class="wax-seal" id="wax-seal">
+                            <div class="seal-inner">
+                                <span class="seal-text">OPEN</span>
+                                <div class="seal-border-pulse"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -106,7 +95,7 @@
         </header>
 
         <!-- ==================== HERO SECTION ==================== -->
-        <section id="hero" class="hero-section" style="background-image: url('ghibli_hero_bg.jpg');">
+        <section id="hero" class="hero-section" style="background-image: url('minimal-bg.jpg');">
             <div class="hero-border-frame"></div>
             <div class="hero-content">
                 <p class="hero-sub-intro reveal">We Are Getting Married</p>
