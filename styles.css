@@ -4,17 +4,20 @@
    ========================================================================== */
 
 :root {
-    --color-charcoal: #0B251A; /* Deep Royal Emerald Green */
-    --color-white: #FFFFFF;
-    --color-offwhite: #FAF6EB; /* Whimsical Warm Parchment */
-    --color-cream: #F5EFEB; /* Warm Soft Ivory */
+    --color-charcoal: #2C2219; /* Rich Warm Mocha Charcoal */
+    --color-white: #FFFDF9; /* Soft Warm Ivory */
+    --color-offwhite: #FAF5EB; /* Whimsical Warm Parchment */
+    --color-cream: #F6EFE5; /* Soft Cream */
     --color-gold: #D4AF37; /* Metallic Gold */
-    --color-gold-dark: #A67C1E; /* Rich Bronze Gold */
-    --color-gold-light: #F7E7C4; /* Soft Gold Tint */
-    --color-gray-dark: #4A5B51; /* Dark Sage Green */
-    --color-gray-light: #E2ECE5; /* Light Sage Tint */
-    --color-gray-border: #D1DFD6; /* Border Sage */
+    --color-gold-dark: #9A7516; /* Rich Bronze Gold */
+    --color-gold-light: #F7E8C4; /* Soft Champagne Gold Tint */
+    --color-gray-dark: #665847; /* Warm Taupe Gray */
+    --color-gray-light: #EFE6D8; /* Soft Parchment Tint */
+    --color-gray-border: #E5D7C3; /* Gold Cream Border */
     --color-crimson: #8E1624; /* Royal Crimson for accents */
+    
+    /* Paper Texture */
+    --bg-paper-texture: url('gold_cream_paper_bg.png');
     
     /* Fonts */
     --font-heading: 'Cinzel', serif;
@@ -43,7 +46,10 @@ html {
 
 body {
     font-family: var(--font-body);
-    background-color: var(--color-white);
+    background-color: var(--color-offwhite);
+    background-image: var(--bg-paper-texture);
+    background-repeat: repeat;
+    background-size: 550px auto;
     color: var(--color-charcoal);
     line-height: 1.65;
     overflow-x: hidden;
@@ -160,7 +166,7 @@ img {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    background: radial-gradient(circle at center, #1B3B2B 0%, #08130E 100%);
+    background: radial-gradient(circle at 50% 45%, #FFFDF8 0%, #F5ECE0 45%, #E5D5BF 100%);
     transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), visibility 1.2s ease;
 }
 
@@ -170,8 +176,8 @@ img {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: radial-gradient(rgba(212, 175, 55, 0.035) 1px, transparent 1px);
-    background-size: 24px 24px;
+    background-image: radial-gradient(rgba(180, 140, 40, 0.15) 1px, transparent 1px);
+    background-size: 20px 20px;
     pointer-events: none;
 }
 
@@ -198,8 +204,8 @@ img {
     position: relative;
     width: 100%;
     height: 100%;
-    background-color: var(--color-charcoal);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55), inset 0 0 20px rgba(0, 0, 0, 0.3);
+    background-color: #FAF4EB;
+    box-shadow: 0 30px 70px rgba(130, 100, 40, 0.25), inset 0 0 25px rgba(212, 175, 55, 0.15);
     transform-style: preserve-3d;
     border: 2px solid var(--color-gold);
 }
@@ -215,36 +221,36 @@ img {
 }
 
 .back-flap {
-    background-color: #0E3021;
+    background-color: #EDE2D0;
     z-index: 1;
 }
 
 .left-flap {
-    background: linear-gradient(135deg, #184430 0%, #0F2D1F 100%);
+    background: linear-gradient(135deg, #F8F0E4 0%, #E9DCC9 100%);
     clip-path: polygon(0 0, 0 100%, 52% 50%);
     z-index: 3;
 }
 
 .right-flap {
-    background: linear-gradient(225deg, #184430 0%, #0F2D1F 100%);
+    background: linear-gradient(225deg, #F8F0E4 0%, #E9DCC9 100%);
     clip-path: polygon(100% 0, 100% 100%, 48% 50%);
     z-index: 3;
 }
 
 .bottom-flap {
-    background: linear-gradient(0deg, #113625 0%, #0E2E1F 100%);
+    background: linear-gradient(0deg, #F2E7D7 0%, #E5D5C0 100%);
     clip-path: polygon(0 100%, 100% 100%, 50% 48%);
     z-index: 3;
-    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    border-top: 1px solid rgba(212, 175, 55, 0.35);
 }
 
 .top-flap {
-    background: linear-gradient(180deg, #194632 0%, #113625 100%);
+    background: linear-gradient(180deg, #FAF3E7 0%, #ECE0CC 100%);
     clip-path: polygon(0 0, 100% 0, 50% 52%);
     z-index: 4;
     transform-origin: top;
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: inset 0 2px 5px rgba(255,255,255,0.05);
+    box-shadow: inset 0 2px 5px rgba(255,255,255,0.4);
 }
 
 /* Flap Open Transition */
@@ -431,13 +437,14 @@ img {
     font-size: 0.6rem;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--color-gold-light);
+    color: var(--color-gold-dark);
+    font-weight: 600;
 }
 
 .prompt-arrow-bounce {
     animation: bounceDownArrow 1.5s infinite;
     font-size: 1.1rem;
-    color: var(--color-gold);
+    color: var(--color-gold-dark);
 }
 
 @keyframes bounceDownArrow {
@@ -794,8 +801,8 @@ img {
 
 /* ==================== COUPLE SECTION ==================== */
 .couple-section {
-    background-color: var(--color-offwhite);
-    background-image: radial-gradient(rgba(45, 106, 79, 0.03) 1px, transparent 1px);
+    background-color: transparent;
+    background-image: radial-gradient(rgba(212, 175, 55, 0.08) 1px, transparent 1px);
     background-size: 24px 24px;
 }
 
@@ -809,10 +816,12 @@ img {
 }
 
 .couple-details-card {
-    background-color: var(--color-white);
-    border: 1px solid var(--color-gray-border);
+    background-color: rgba(255, 253, 249, 0.92);
+    border: 1px solid var(--color-gold);
+    outline: 2px double rgba(197, 155, 39, 0.3);
+    outline-offset: -6px;
     padding: 40px 30px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.015);
+    box-shadow: 0 10px 30px rgba(140, 110, 40, 0.08);
     text-align: center;
     border-radius: 4px;
     position: relative;
@@ -1178,7 +1187,7 @@ img {
 
 /* ==================== EVENTS SECTION ==================== */
 .events-section {
-    background-color: var(--color-offwhite);
+    background-color: transparent;
 }
 
 .events-grid {
@@ -1188,11 +1197,15 @@ img {
 }
 
 .event-card {
-    background-color: var(--color-white);
-    border: 1px solid var(--color-gray-light);
+    background-color: rgba(255, 253, 249, 0.92);
+    border: 1px solid var(--color-gray-border);
+    outline: 1px solid rgba(197, 155, 39, 0.25);
+    outline-offset: -5px;
+    box-shadow: 0 8px 25px rgba(140, 110, 40, 0.05);
     transition: var(--transition-normal);
     display: flex;
     flex-direction: column;
+    border-radius: 4px;
 }
 
 .event-card:hover {
@@ -1280,15 +1293,19 @@ img {
 
 /* ==================== RSVP SECTION ==================== */
 .rsvp-section {
-    background-color: var(--color-white);
+    background-color: transparent;
 }
 
 .rsvp-wrapper {
     max-width: 750px;
     margin: 0 auto;
-    border: 1px solid var(--color-gray-light);
-    background-color: var(--color-offwhite);
+    border: 1px solid var(--color-gold);
+    outline: 2px double rgba(197, 155, 39, 0.3);
+    outline-offset: -7px;
+    background-color: rgba(255, 253, 249, 0.94);
     padding: 60px 45px;
+    border-radius: 4px;
+    box-shadow: 0 15px 40px rgba(140, 110, 40, 0.08);
 }
 
 .rsvp-form {
@@ -1498,7 +1515,7 @@ img {
 /* ==================== HOSTS SECTION ==================== */
 .hosts-section {
     padding: 100px 0;
-    background-color: var(--color-white);
+    background-color: transparent;
     text-align: center;
     border-top: 1px solid var(--color-gray-border);
 }
@@ -1568,10 +1585,10 @@ img {
 
 /* ==================== FOOTER SECTION ==================== */
 .footer {
-    background-color: var(--color-offwhite);
+    background-color: transparent;
     padding: 80px 0;
     text-align: center;
-    border-top: 1px solid var(--color-gray-light);
+    border-top: 1px solid var(--color-gray-border);
     position: relative;
 }
 
