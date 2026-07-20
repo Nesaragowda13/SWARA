@@ -165,12 +165,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.wobble = Math.random() * Math.PI * 2;
                 this.wobbleSpeed = Math.random() * 0.008 + 0.004;
                 
-                // Exquisite premium gold tones optimized for cream background
+                // Exquisite floating gold dust particles for crisp Royal Cream background
                 const goldTones = [
-                    `rgba(180, 138, 28, ${Math.random() * 0.5 + 0.45})`,  // Metallic Gold
-                    `rgba(212, 175, 55, ${Math.random() * 0.6 + 0.45})`,  // Champagne Gold
-                    `rgba(140, 102, 12, ${Math.random() * 0.4 + 0.4})`,   // Deep Bronze Gold
-                    `rgba(240, 215, 140, ${Math.random() * 0.7 + 0.3})`   // Soft Warm Gold Sparkle
+                    `rgba(212, 175, 55, ${Math.random() * 0.4 + 0.35})`,  // Champagne Gold
+                    `rgba(180, 138, 28, ${Math.random() * 0.4 + 0.3})`,   // Metallic Gold
+                    `rgba(150, 110, 20, ${Math.random() * 0.3 + 0.25})`,  // Rich Bronze
+                    `rgba(245, 220, 150, ${Math.random() * 0.5 + 0.3})`   // Soft Gold Glow
                 ];
                 this.color = goldTones[Math.floor(Math.random() * goldTones.length)];
             }

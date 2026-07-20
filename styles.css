@@ -4,20 +4,17 @@
    ========================================================================== */
 
 :root {
-    --color-charcoal: #2C2219; /* Rich Warm Mocha Charcoal */
-    --color-white: #FFFDF9; /* Soft Warm Ivory */
-    --color-offwhite: #FAF5EB; /* Whimsical Warm Parchment */
-    --color-cream: #F6EFE5; /* Soft Cream */
-    --color-gold: #D4AF37; /* Metallic Gold */
-    --color-gold-dark: #9A7516; /* Rich Bronze Gold */
-    --color-gold-light: #F7E8C4; /* Soft Champagne Gold Tint */
-    --color-gray-dark: #665847; /* Warm Taupe Gray */
-    --color-gray-light: #EFE6D8; /* Soft Parchment Tint */
-    --color-gray-border: #E5D7C3; /* Gold Cream Border */
-    --color-crimson: #8E1624; /* Royal Crimson for accents */
-    
-    /* Paper Texture */
-    --bg-paper-texture: url('gold_cream_paper_bg.png');
+    --color-charcoal: #1C1611; /* Ultra Crisp Deep Velvet Mocha Black */
+    --color-white: #FFFFFF;
+    --color-offwhite: #FAF5EA; /* Warm Royal Ivory Parchment */
+    --color-cream: #F3E9D7; /* Soft Champagne Cream */
+    --color-gold: #D4AF37; /* Bright Metallic Gold */
+    --color-gold-dark: #8C6D23; /* Rich Antique Bronze Gold */
+    --color-gold-light: #F7E8C4; /* Soft Gold Tint */
+    --color-gray-dark: #5A4E42; /* Soft Warm Slate */
+    --color-gray-light: #ECE2D4; /* Light Ivory Border Tint */
+    --color-gray-border: #E2D3BE; /* Delicate Gold Cream Border */
+    --color-crimson: #8E1624; /* Royal Crimson Accent */
     
     /* Fonts */
     --font-heading: 'Cinzel', serif;
@@ -46,12 +43,9 @@ html {
 
 body {
     font-family: var(--font-body);
-    background-color: var(--color-offwhite);
-    background-image: var(--bg-paper-texture);
-    background-repeat: repeat;
-    background-size: 550px auto;
+    background: radial-gradient(circle at 50% 20%, #FFFDF8 0%, #FAF5EA 50%, #F3E9D7 100%) fixed;
     color: var(--color-charcoal);
-    line-height: 1.65;
+    line-height: 1.7;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
 }
@@ -514,16 +508,16 @@ img {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background-color: rgba(253, 248, 239, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--color-gray-border);
     z-index: 900;
     transition: var(--transition-normal);
 }
 
 .navbar.scrolled {
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 4px 20px rgba(140, 110, 40, 0.06);
 }
 
 .nav-container {
@@ -600,9 +594,7 @@ img {
 .hero-section {
     height: 100vh;
     min-height: 750px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -616,7 +608,9 @@ img {
     left: 30px;
     right: 30px;
     bottom: 30px;
-    border: 1px solid rgba(212, 175, 55, 0.25);
+    border: 1px solid var(--color-gold);
+    outline: 1px solid rgba(212, 175, 55, 0.3);
+    outline-offset: -8px;
     pointer-events: none;
     z-index: 5;
 }
