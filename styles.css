@@ -45,11 +45,11 @@ body {
     font-family: var(--font-body);
     /* Gold-leaf paper texture base */
     background-image:
-        radial-gradient(ellipse 90% 60% at 50% 0%,  rgba(255,253,240,0.55) 0%, transparent 65%),
-        radial-gradient(ellipse 60% 90% at 0% 50%,  rgba(245,230,180,0.30) 0%, transparent 55%),
-        radial-gradient(ellipse 60% 90% at 100% 50%, rgba(235,210,150,0.30) 0%, transparent 55%),
-        radial-gradient(ellipse 100% 50% at 50% 100%, rgba(210,175,80,0.20) 0%, transparent 60%),
-        url('gold_cream_paper_bg.png');
+        radial-gradient(ellipse 80% 55% at 50% 0%,  rgba(255,255,252,0.40) 0%, transparent 65%),
+        radial-gradient(ellipse 55% 80% at 0% 50%,  rgba(245,235,195,0.25) 0%, transparent 55%),
+        radial-gradient(ellipse 55% 80% at 100% 50%, rgba(235,215,165,0.25) 0%, transparent 55%),
+        radial-gradient(ellipse 90% 45% at 50% 100%, rgba(210,180,90,0.15) 0%, transparent 60%),
+        url('minimal-bg.jpg');
     background-size: auto, auto, auto, auto, cover;
     background-attachment: scroll, scroll, scroll, scroll, fixed;
     background-repeat: no-repeat;
@@ -741,12 +741,12 @@ img {
     overflow: hidden;
     /* Gold-leaf paper texture + warm gradient overlays */
     background-image:
-        radial-gradient(ellipse 65% 50% at 50% 50%, rgba(255,253,242,0.72) 0%, transparent 70%),
-        radial-gradient(ellipse 35% 85% at 0%   50%, rgba(212,175,55,0.16) 0%, transparent 60%),
-        radial-gradient(ellipse 35% 85% at 100% 50%, rgba(180,130,30,0.16) 0%, transparent 60%),
-        radial-gradient(ellipse 90% 35% at 50% 0%,  rgba(255,240,160,0.22) 0%, transparent 60%),
-        radial-gradient(ellipse 90% 35% at 50% 100%, rgba(210,170,60,0.14) 0%, transparent 60%),
-        url('gold_cream_paper_bg.png');
+        radial-gradient(ellipse 60% 48% at 50% 50%, rgba(255,255,252,0.60) 0%, transparent 68%),
+        radial-gradient(ellipse 30% 80% at 0%   50%, rgba(212,185,95,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 30% 80% at 100% 50%, rgba(190,165,70,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 85% 30% at 50% 0%,  rgba(255,248,220,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 85% 30% at 50% 100%, rgba(210,175,75,0.10) 0%, transparent 60%),
+        url('minimal-bg.jpg');
     background-size: auto, auto, auto, auto, auto, cover;
     background-repeat: no-repeat;
     background-position: center;
