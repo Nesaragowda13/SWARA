@@ -160,19 +160,140 @@ img {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    background: radial-gradient(circle at 50% 45%, #FFFDF9 0%, #F5EADA 50%, #E6D6C0 100%);
+    /* Rich layered background: deep ivory with golden warm vignette */
+    background:
+        radial-gradient(ellipse 80% 60% at 50% 50%, rgba(255,253,247,0.55) 0%, transparent 70%),
+        radial-gradient(ellipse 120% 80% at 0% 0%, rgba(212,175,55,0.18) 0%, transparent 50%),
+        radial-gradient(ellipse 120% 80% at 100% 100%, rgba(180,120,30,0.18) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 60% at 100% 0%, rgba(255,220,120,0.13) 0%, transparent 45%),
+        radial-gradient(ellipse 60% 60% at 0% 100%, rgba(200,140,50,0.13) 0%, transparent 45%),
+        linear-gradient(160deg, #FFF8EC 0%, #F5E6C8 40%, #EDD8B0 70%, #E4C98E 100%);
     transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), visibility 1.2s ease;
 }
 
-/* Faint royal damask pattern on backdrop */
+/* Ornate tiled floral / damask pattern */
 .envelope-overlay::before {
     content: '';
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image: radial-gradient(rgba(180, 140, 40, 0.12) 1px, transparent 1px);
-    background-size: 24px 24px;
+    inset: 0;
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23C9A227' stroke-width='0.6' opacity='0.25'%3E%3Ccircle cx='40' cy='40' r='18'/%3E%3Ccircle cx='40' cy='40' r='10'/%3E%3Ccircle cx='40' cy='40' r='3'/%3E%3Cpath d='M40 22 Q48 31 40 40 Q32 31 40 22Z'/%3E%3Cpath d='M40 58 Q32 49 40 40 Q48 49 40 58Z'/%3E%3Cpath d='M22 40 Q31 32 40 40 Q31 48 22 40Z'/%3E%3Cpath d='M58 40 Q49 48 40 40 Q49 32 58 40Z'/%3E%3Cpath d='M27 27 Q34 34 40 40 Q33 33 27 27Z' stroke-width='0.4'/%3E%3Cpath d='M53 27 Q46 34 40 40 Q47 33 53 27Z' stroke-width='0.4'/%3E%3Cpath d='M27 53 Q34 46 40 40 Q33 47 27 53Z' stroke-width='0.4'/%3E%3Cpath d='M53 53 Q46 46 40 40 Q47 47 53 53Z' stroke-width='0.4'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 80px 80px;
     pointer-events: none;
+    z-index: 0;
+}
+
+/* Glowing corner vignettes */
+.envelope-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 35% 35% at 0% 0%, rgba(212,175,55,0.22) 0%, transparent 70%),
+        radial-gradient(ellipse 35% 35% at 100% 0%, rgba(180,130,30,0.20) 0%, transparent 70%),
+        radial-gradient(ellipse 35% 35% at 0% 100%, rgba(180,130,30,0.20) 0%, transparent 70%),
+        radial-gradient(ellipse 35% 35% at 100% 100%, rgba(212,175,55,0.22) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Animated bokeh orbs floating in background */
+.envelope-overlay .env-orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    animation: envOrbFloat linear infinite;
+    opacity: 0;
+}
+
+@keyframes envOrbFloat {
+    0%   { transform: translateY(0) scale(1);   opacity: 0; }
+    15%  { opacity: 1; }
+    85%  { opacity: 1; }
+    100% { transform: translateY(-120px) scale(1.3); opacity: 0; }
+}
+
+/* Decorative corner frame borders on the overlay */
+.env-corner-frame {
+    position: absolute;
+    inset: 18px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.env-corner {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+}
+
+.env-corner--tl { top: 0; left: 0; }
+.env-corner--tr { top: 0; right: 0; }
+.env-corner--bl { bottom: 0; left: 0; }
+.env-corner--br { bottom: 0; right: 0; }
+
+/* Full border lines connecting corners */
+.env-corner-frame::before,
+.env-corner-frame::after {
+    content: '';
+    position: absolute;
+    background: linear-gradient(to right, rgba(212,175,55,0.55), rgba(212,175,55,0.15), rgba(212,175,55,0.55));
+    pointer-events: none;
+}
+
+.env-corner-frame::before {
+    /* top and bottom hairlines */
+    left: 45px;
+    right: 45px;
+    height: 1px;
+    top: 5px;
+    box-shadow: 0 calc(100% + 10px) 0 0 rgba(212,175,55,0.3);
+}
+
+.env-corner-frame::after {
+    /* left and right hairlines — rotate trick */
+    top: 45px;
+    bottom: 45px;
+    width: 1px;
+    left: 5px;
+    background: linear-gradient(to bottom, rgba(212,175,55,0.55), rgba(212,175,55,0.15), rgba(212,175,55,0.55));
+    box-shadow: calc(100% + 10px) 0 0 0 rgba(212,175,55,0.3);
+}
+
+/* Top banner branding text */
+.env-top-banner {
+    position: absolute;
+    top: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    z-index: 3;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.env-banner-text {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--color-gold-dark);
+    opacity: 0.85;
+}
+
+.env-banner-ornament {
+    font-size: 0.6rem;
+    color: var(--color-gold);
+    opacity: 0.7;
+    animation: orbPulse 2.5s infinite ease-in-out;
+}
+
+@keyframes orbPulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.3); }
 }
 
 .envelope-wrapper {

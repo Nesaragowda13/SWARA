@@ -50,6 +50,50 @@
 
     <!-- ==================== INTERACTIVE 3D ENVELOPE COVER ==================== -->
     <div id="envelope-overlay" class="envelope-overlay">
+
+        <!-- Decorative corner border ornaments -->
+        <div class="env-corner-frame">
+            <svg class="env-corner env-corner--tl" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5,5 L5,45 Q5,5 45,5" fill="none" stroke="#C9A227" stroke-width="1.5"/>
+                <path d="M5,5 L5,35 Q5,15 25,5" fill="none" stroke="#D4AF37" stroke-width="0.7" opacity="0.6"/>
+                <circle cx="5" cy="5" r="3" fill="#D4AF37" opacity="0.8"/>
+                <path d="M5,25 Q15,15 25,5" fill="none" stroke="#C9A227" stroke-width="0.5" opacity="0.4"/>
+            </svg>
+            <svg class="env-corner env-corner--tr" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M95,5 L95,45 Q95,5 55,5" fill="none" stroke="#C9A227" stroke-width="1.5"/>
+                <path d="M95,5 L95,35 Q95,15 75,5" fill="none" stroke="#D4AF37" stroke-width="0.7" opacity="0.6"/>
+                <circle cx="95" cy="5" r="3" fill="#D4AF37" opacity="0.8"/>
+                <path d="M95,25 Q85,15 75,5" fill="none" stroke="#C9A227" stroke-width="0.5" opacity="0.4"/>
+            </svg>
+            <svg class="env-corner env-corner--bl" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5,95 L5,55 Q5,95 45,95" fill="none" stroke="#C9A227" stroke-width="1.5"/>
+                <path d="M5,95 L5,65 Q5,85 25,95" fill="none" stroke="#D4AF37" stroke-width="0.7" opacity="0.6"/>
+                <circle cx="5" cy="95" r="3" fill="#D4AF37" opacity="0.8"/>
+                <path d="M5,75 Q15,85 25,95" fill="none" stroke="#C9A227" stroke-width="0.5" opacity="0.4"/>
+            </svg>
+            <svg class="env-corner env-corner--br" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M95,95 L95,55 Q95,95 55,95" fill="none" stroke="#C9A227" stroke-width="1.5"/>
+                <path d="M95,95 L95,65 Q95,85 75,95" fill="none" stroke="#D4AF37" stroke-width="0.7" opacity="0.6"/>
+                <circle cx="95" cy="95" r="3" fill="#D4AF37" opacity="0.8"/>
+                <path d="M95,75 Q85,85 75,95" fill="none" stroke="#C9A227" stroke-width="0.5" opacity="0.4"/>
+            </svg>
+        </div>
+
+        <!-- Decorative top banner text -->
+        <div class="env-top-banner">
+            <span class="env-banner-ornament">✦</span>
+            <span class="env-banner-text">Wedding Invitation</span>
+            <span class="env-banner-ornament">✦</span>
+        </div>
+
+        <!-- Bokeh floating orbs (injected by JS but also fallback static set) -->
+        <div class="env-orb" style="width:180px;height:180px;left:5%;top:10%;background:radial-gradient(circle,rgba(255,220,100,0.18),transparent 70%);animation-duration:12s;animation-delay:0s;"></div>
+        <div class="env-orb" style="width:120px;height:120px;right:8%;top:20%;background:radial-gradient(circle,rgba(212,175,55,0.14),transparent 70%);animation-duration:15s;animation-delay:3s;"></div>
+        <div class="env-orb" style="width:200px;height:200px;left:15%;bottom:10%;background:radial-gradient(circle,rgba(240,190,80,0.12),transparent 70%);animation-duration:18s;animation-delay:6s;"></div>
+        <div class="env-orb" style="width:90px;height:90px;right:15%;bottom:20%;background:radial-gradient(circle,rgba(255,215,80,0.15),transparent 70%);animation-duration:10s;animation-delay:1.5s;"></div>
+        <div class="env-orb" style="width:140px;height:140px;left:40%;top:5%;background:radial-gradient(circle,rgba(212,175,55,0.10),transparent 70%);animation-duration:14s;animation-delay:4s;"></div>
+        <div class="env-orb" style="width:100px;height:100px;right:30%;bottom:5%;background:radial-gradient(circle,rgba(255,200,80,0.12),transparent 70%);animation-duration:16s;animation-delay:7s;"></div>
+
         <div class="envelope-wrapper" id="envelope-wrapper">
             <div class="envelope" id="envelope">
                 <div class="envelope-flap back-flap"></div>
