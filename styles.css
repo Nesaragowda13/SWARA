@@ -43,11 +43,17 @@ html {
 
 body {
     font-family: var(--font-body);
-    background:
-        radial-gradient(ellipse 100% 60% at 50% 0%, rgba(255,240,180,0.18) 0%, transparent 65%),
-        radial-gradient(ellipse 80% 80% at 0% 50%, rgba(212,175,55,0.10) 0%, transparent 55%),
-        radial-gradient(ellipse 80% 80% at 100% 50%, rgba(180,130,30,0.10) 0%, transparent 55%),
-        linear-gradient(175deg, #FFFCF2 0%, #FAF3E0 35%, #F5EACF 65%, #EFE0BB 100%) fixed;
+    /* Gold-leaf paper texture base */
+    background-image:
+        radial-gradient(ellipse 90% 60% at 50% 0%,  rgba(255,253,240,0.55) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 90% at 0% 50%,  rgba(245,230,180,0.30) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 90% at 100% 50%, rgba(235,210,150,0.30) 0%, transparent 55%),
+        radial-gradient(ellipse 100% 50% at 50% 100%, rgba(210,175,80,0.20) 0%, transparent 60%),
+        url('gold_leaf_paper_bg2.png');
+    background-size: auto, auto, auto, auto, cover;
+    background-attachment: scroll, scroll, scroll, scroll, fixed;
+    background-repeat: no-repeat;
+    background-position: center;
     color: var(--color-charcoal);
     line-height: 1.7;
     overflow-x: hidden;
@@ -733,14 +739,18 @@ img {
     position: relative;
     text-align: center;
     overflow: hidden;
-    /* Base page background override */
-    background:
-        radial-gradient(ellipse 70% 55% at 50% 50%, rgba(255,253,240,0.85) 0%, transparent 75%),
-        radial-gradient(ellipse 40% 80% at 0% 50%,  rgba(212,175,55,0.13) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 80% at 100% 50%, rgba(180,130,30,0.13) 0%, transparent 60%),
-        radial-gradient(ellipse 80% 40% at 50% 0%,  rgba(255,235,140,0.20) 0%, transparent 60%),
-        radial-gradient(ellipse 80% 40% at 50% 100%, rgba(210,165,50,0.12) 0%, transparent 60%),
-        linear-gradient(160deg, #FFFCF0 0%, #FBF3DC 30%, #F5E8C2 60%, #EDD9A3 100%);
+    /* Gold-leaf paper texture + warm gradient overlays */
+    background-image:
+        radial-gradient(ellipse 65% 50% at 50% 50%, rgba(255,253,242,0.72) 0%, transparent 70%),
+        radial-gradient(ellipse 35% 85% at 0%   50%, rgba(212,175,55,0.16) 0%, transparent 60%),
+        radial-gradient(ellipse 35% 85% at 100% 50%, rgba(180,130,30,0.16) 0%, transparent 60%),
+        radial-gradient(ellipse 90% 35% at 50% 0%,  rgba(255,240,160,0.22) 0%, transparent 60%),
+        radial-gradient(ellipse 90% 35% at 50% 100%, rgba(210,170,60,0.14) 0%, transparent 60%),
+        url('gold_leaf_paper_bg2.png');
+    background-size: auto, auto, auto, auto, auto, cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: scroll;
 }
 
 /* === HERO: Crepuscular light rays from center === */
